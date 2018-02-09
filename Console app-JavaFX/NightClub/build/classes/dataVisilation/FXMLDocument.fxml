@@ -68,7 +68,19 @@
                                                       <DatePicker fx:id="DailyCheckDateEnd" />
                                                    </children>
                                                 </VBox>
-                                                <VBox alignment="TOP_CENTER" />
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                   </children></VBox>
+                                                <Button mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
                                              </items>
                                           </ToolBar>
                                           <StackedBarChart fx:id="dailyCheckStack" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
@@ -79,7 +91,7 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </StackedBarChart>
-                                          <LineChart fx:id="DailyCheckLine" layoutX="9.0" layoutY="344.0" prefHeight="178.0" prefWidth="705.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
+                                          <LineChart fx:id="DailyCheckLine" layoutX="16.0" layoutY="333.0" prefHeight="178.0" prefWidth="705.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                             <xAxis>
                                               <CategoryAxis side="BOTTOM" />
                                             </xAxis>
@@ -112,7 +124,7 @@
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="SanatçıTipi" />
-                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                                                          <contextMenu>
                                                             <ContextMenu>
                                                                <items>
@@ -128,6 +140,17 @@
                                                       </SplitMenuButton>
                                                    </children>
                                                 </VBox>
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar" />
+                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                   </children>
+                                                </VBox>
+                                                <Button mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
                                              </items>
                                           </ToolBar>
                                           <StackedBarChart fx:id="stachChart111" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
@@ -171,7 +194,7 @@
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Sanatçı Adı" />
-                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="24.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                                                          <contextMenu>
                                                             <ContextMenu>
                                                                <items>
@@ -185,6 +208,17 @@
                                                       </SplitMenuButton>
                                                    </children>
                                                 </VBox>
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar" />
+                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                   </children>
+                                                </VBox>
+                                                <Button mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
                                              </items>
                                           </ToolBar>
                                           <StackedBarChart fx:id="stachChart11" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
@@ -218,12 +252,173 @@
             </TitledPane>
           <TitledPane text="Sorgu Menüsü">
                <content>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <ToolBar prefHeight="98.0" prefWidth="1068.0" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Ciro" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kar" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Ciro Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kar Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kişi Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Alkol tüketim Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="SanatçıTipi" />
+                                    <SplitMenuButton mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="8 binlik" />
+                                          <MenuItem mnemonicParsing="false" text="25 binlik" />
+                                          <MenuItem mnemonicParsing="false" text="+90 binlik" />
+                                       </items>
+                                    </SplitMenuButton>
+                                 </children>
+                              </VBox>
+                              <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="68.0" text="Ara" />
+                           </items>
+                        </ToolBar>
+                     </top>
+                     <right>
+                        <TextArea prefHeight="465.0" prefWidth="315.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
+                     </right>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView prefHeight="460.0" prefWidth="755.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn prefWidth="109.76680946350098" text="Tarih " />
+                                    <TableColumn prefWidth="111.82603454589844" text="Event Tipi" />
+                                    <TableColumn prefWidth="82.03175354003906" text="Ciro" />
+                                    <TableColumn editable="false" prefWidth="82.03175354003906" text="Kar" />
+                                    <TableColumn prefWidth="347.2500305175781" text="Endexler">
+                                       <columns>
+                                          <TableColumn prefWidth="84.35174560546875" text="Ciro" />
+                                          <TableColumn prefWidth="85.82220458984375" text="Kar" />
+                                          <TableColumn prefWidth="88.88134765625" text="Kişi " />
+                                          <TableColumn prefWidth="101.11865234375" text="Alkol tüketim" />
+                                       </columns>
+                                    </TableColumn>
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
                </content>
             </TitledPane>
             <TitledPane prefHeight="641.0" text="Tüm Geceler">
                <content>
-                  <Pagination maxPageIndicatorCount="20" pageCount="20" prefHeight="175.0" prefWidth="1090.0" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <HBox alignment="CENTER" prefHeight="36.0" prefWidth="1068.0" style="-: gray;" BorderPane.alignment="CENTER">
+                           <children>
+                              <Label text="Tarih    " />
+                              <DatePicker>
+                                 <HBox.margin>
+                                    <Insets right="50.0" />
+                                 </HBox.margin>
+                              </DatePicker>
+                              <Button mnemonicParsing="false" text="Bilgileri pdf olarak çıkart">
+                                 <HBox.margin>
+                                    <Insets left="200.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                        </HBox>
+                     </top>
+                     <bottom>
+                        <TextArea prefHeight="318.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView prefHeight="202.0" prefWidth="1058.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <columnResizePolicy>
+                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                 </columnResizePolicy>
+                                 <columns>
+                                    <TableColumn prefWidth="109.76680946350098" text="Tarih " />
+                                    <TableColumn prefWidth="111.82603454589844" text="Event Tipi" />
+                                    <TableColumn prefWidth="82.03175354003906" text="Ciro" />
+                                    <TableColumn editable="false" prefWidth="82.03175354003906" text="Kar" />
+                                    <TableColumn prefWidth="356.0000305175781" text="Endexler">
+                                       <columns>
+                                          <TableColumn prefWidth="84.35174560546875" text="Ciro" />
+                                          <TableColumn prefWidth="85.82220458984375" text="Kar" />
+                                          <TableColumn prefWidth="88.88134765625" text="Kişi " />
+                                          <TableColumn prefWidth="101.11865234375" text="Alkol tüketim" />
+                                       </columns>
+                                    </TableColumn>
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
                </content>
             </TitledPane>
         </panes>
@@ -243,7 +438,8 @@
         <menus>
           <Menu mnemonicParsing="false" text="Dosya">
             <items>
-              <MenuItem mnemonicParsing="false" text="Yorumları Göster" />
+              <MenuItem mnemonicParsing="false" text="Yorum Ekle" />
+                  <MenuItem mnemonicParsing="false" text="Yorumları Göster" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ekle">
