@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dataVisilation.FXMLDocumentController">
+   <center>
+      <Accordion prefHeight="665.0" prefWidth="1090.0" BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane minWidth="500.0" prefHeight="590.0" prefWidth="1090.0" snapToPixel="false" style="-fx-background-color: gray;" text="Tüm Grafikler">
+               <content>
+                  <AnchorPane fx:id="asd" cacheHint="SCALE" focusTraversable="true" minWidth="100.0" prefHeight="613.0" prefWidth="1090.0" style="-fx-background-color: gray;">
+                     <children>
+                        <TabPane fx:id="gunlukCiroTabPane" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="112.0" layoutY="54.0" minWidth="350.0" prefWidth="350.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
+                          <tabs>
+                            <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlük Ciro Dağılımı">
+                              <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <PieChart fx:id="DailyTurnoverDistribution" layoutY="102.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+                                          <Label fx:id="DailyTurnoverDistributionLabel" />
+                                          <DatePicker fx:id="datePiccerForDaylyCiro" layoutX="76.0" layoutY="37.0" />
+                                          <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
+                                          <Label fx:id="datePiccerLabelForDaylyCiro" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlük Kar Dağılımı">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <PieChart fx:id="DailyTurnoverDistribution1" layoutY="102.0" prefHeight="464.0" prefWidth="370.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+                                          <Label fx:id="DailyTurnoverDistributionLabel1" />
+                                          <DatePicker fx:id="datePiccerForDaylyCiro1" layoutX="76.0" layoutY="37.0" />
+                                          <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
+                                          <Label fx:id="datePiccerLabelForDaylyCiro1" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                        <TabPane cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="415.0" layoutY="2.0" minWidth="300.0" prefWidth="600.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+                          <tabs>
+                            <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlere göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker fx:id="DailyCheckDateStart" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker fx:id="DailyCheckDateEnd" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER" />
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="dailyCheckStack" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart fx:id="DailyCheckLine" layoutX="9.0" layoutY="344.0" prefHeight="178.0" prefWidth="705.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="9.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                            </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçı Tipine göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane prefHeight="600.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="SanatçıTipi" />
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                               </items>
+                                                            </ContextMenu>
+                                                         </contextMenu>
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="8 binlik" />
+                                                            <MenuItem mnemonicParsing="false" text="25 binlik" />
+                                                            <MenuItem mnemonicParsing="false" text="+90 binlik" />
+                                                         </items>
+                                                      </SplitMenuButton>
+                                                   </children>
+                                                </VBox>
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="stachChart111" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart layoutX="146.0" layoutY="245.0" prefHeight="178.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçılara göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Sanatçı Adı" />
+                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="31.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                               </items>
+                                                            </ContextMenu>
+                                                         </contextMenu>
+                                                         <items>
+                                                            <MenuItem mnemonicParsing="false" text="......." />
+                                                         </items>
+                                                      </SplitMenuButton>
+                                                   </children>
+                                                </VBox>
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="stachChart11" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart layoutX="154.0" layoutY="245.0" prefHeight="178.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TitledPane>
+          <TitledPane text="Sorgu Menüsü">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="641.0" text="Tüm Geceler">
+               <content>
+                  <Pagination maxPageIndicatorCount="20" pageCount="20" prefHeight="175.0" prefWidth="1090.0" />
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="5.0" prefWidth="1090.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="824.0" prefWidth="5.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </right>
+   <left>
+      <AnchorPane prefHeight="824.0" prefWidth="5.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <MenuBar prefHeight="30.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Dosya">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Yorumları Göster" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ekle">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Swarm Excel Dosysı Ekle" />
+              <MenuItem fx:id="addnightexcel" mnemonicParsing="false" text="Excel Dosyası Ekle" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Yardım">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
