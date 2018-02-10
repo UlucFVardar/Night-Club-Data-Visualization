@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dataVisilation;
 
 import java.io.File;
@@ -32,8 +27,7 @@ public class myExcelFile {
     
     public myExcelFile(String file_name) throws IOException, InvalidFormatException{
         workbook = WorkbookFactory.create(new File(file_name));
-        sheetSize=workbook.getNumberOfSheets();
-        
+        sheetSize=workbook.getNumberOfSheets();      
         Iterator<Sheet> sheetIterator = workbook.sheetIterator();
         sheetNames=new ArrayList<>();
         while (sheetIterator.hasNext()) {
@@ -49,7 +43,6 @@ public class myExcelFile {
     public int getSheetSize() {
         return sheetSize;
     }
-
   
     public Object get(String location,int index){
         if( index <=sheetSize-1 && index>=0 ){

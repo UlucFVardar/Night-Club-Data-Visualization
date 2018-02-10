@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package dataVisilation;
 
 import java.util.ArrayList;
@@ -12,7 +7,7 @@ import java.util.Date;
  *
  * @author uluc
  */
-class Artist  {
+class Artist implements Comparable<Object> {
     private String artistName;
     private ArrayList<Double> costs;
     private ArrayList<EventNight> nights;
@@ -28,6 +23,7 @@ class Artist  {
         this.artistName=artistName;        
         nights.add(night);
     }
+    public Artist(){}
 
    
 
@@ -51,17 +47,25 @@ class Artist  {
         return nights;
     }
 
-       @Override
-     public boolean equals(Object v) {
-        boolean retVal = false;
-
-        if (v instanceof String){
-            String ptr = (String) v;
-            if(ptr.equals(this.artistName)){
-                retVal=true;
+    @Override
+    public boolean equals(Object o)
+    {
+        boolean sameSame = false;
+        if (o != null && o instanceof String)
+        {
+            sameSame = this.artistName.equalsIgnoreCase((String) o);
+        }
+        return sameSame;
+    }
+    @Override
+    public int compareTo(Object o) {
+        if(o instanceof String){
+            String str=(String)o;
+            if(this.getArtistName().equalsIgnoreCase(str)){
+                return 0;
             }
         }
-        return retVal;
-     }
+        return 1;
+    }
     
 }

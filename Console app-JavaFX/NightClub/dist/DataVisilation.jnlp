@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DataVisilation.jar" size="20810" download="eager" />
+    <jar href="DataVisilation.jar" size="51670" download="eager" />
     <jar href="lib/commons-codec-1.10.jar" size="284184" download="eager" />
     <jar href="lib/commons-collections4-4.1.jar" size="751238" download="eager" />
     <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />

@@ -24,24 +24,28 @@
                               <content>
                                     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                        <children>
-                                          <PieChart fx:id="DailyTurnoverDistribution" layoutY="102.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
+                                          <PieChart fx:id="DailyTurnoverDistribution" layoutX="3.0" layoutY="115.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="123.0" />
                                           <Label fx:id="DailyTurnoverDistributionLabel" />
                                           <DatePicker fx:id="datePiccerForDaylyCiro" layoutX="76.0" layoutY="37.0" />
                                           <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
                                           <Label fx:id="datePiccerLabelForDaylyCiro" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                          <Label fx:id="giroLabel" layoutX="34.0" layoutY="99.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                          <Label fx:id="eventLabel" layoutX="37.0" layoutY="519.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
                                        </children>
                                     </AnchorPane>
                               </content>
                             </Tab>
                               <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlük Kar Dağılımı">
                                  <content>
-                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
                                        <children>
-                                          <PieChart fx:id="DailyTurnoverDistribution1" layoutY="102.0" prefHeight="464.0" prefWidth="370.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" />
-                                          <Label fx:id="DailyTurnoverDistributionLabel1" />
-                                          <DatePicker fx:id="datePiccerForDaylyCiro1" layoutX="76.0" layoutY="37.0" />
+                                          <PieChart fx:id="DailyProfitDistiribution" layoutX="13.0" layoutY="125.0" prefHeight="400.0" prefWidth="292.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="123.0" />
+                                          <Label fx:id="dailyProfitValue" />
+                                          <DatePicker fx:id="datePiccerForDaylyProfit" layoutX="76.0" layoutY="37.0" />
                                           <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
-                                          <Label fx:id="datePiccerLabelForDaylyCiro1" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                          <Label fx:id="datePiccerLabelForDaylyProfit" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                          <Label fx:id="profitLabel" layoutX="44.0" layoutY="109.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                          <Label fx:id="eventLabel1" layoutX="47.0" layoutY="529.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -59,33 +63,33 @@
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Başlangıç Tarihi" />
-                                                      <DatePicker fx:id="DailyCheckDateStart" />
+                                                      <DatePicker fx:id="evaluationByDayStart" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Bitiş Tarihi" />
-                                                      <DatePicker fx:id="DailyCheckDateEnd" />
+                                                      <DatePicker fx:id="evaluationByDayEnd" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                      <CheckBox fx:id="evaluationByDayProfitCheck" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
                                                          <VBox.margin>
                                                             <Insets left="3.0" />
                                                          </VBox.margin></CheckBox>
-                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                      <CheckBox fx:id="evaluationByDayGiroCheck" mnemonicParsing="false" text="Ciro" />
                                                    </children></VBox>
-                                                <Button mnemonicParsing="false" text="Ara">
+                                                <Button fx:id="evaluationByDayBtn" mnemonicParsing="false" text="Ara">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="dailyCheckStack" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="evalutionByDayStackChart" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                             <xAxis>
-                                              <CategoryAxis side="BOTTOM" />
+                                              <CategoryAxis fx:id="evelation" side="BOTTOM" />
                                             </xAxis>
                                             <yAxis>
                                               <NumberAxis side="LEFT" />
@@ -112,19 +116,19 @@
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Başlangıç Tarihi" />
-                                                      <DatePicker />
+                                                      <DatePicker fx:id="distributionByArtistsStart" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Bitiş Tarihi" />
-                                                      <DatePicker />
+                                                      <DatePicker fx:id="distributionByArtistsEnd" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="SanatçıTipi" />
-                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                      <SplitMenuButton fx:id="distributionByArtistsSplitMenu" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                                                          <contextMenu>
                                                             <ContextMenu>
                                                                <items>
@@ -133,27 +137,31 @@
                                                             </ContextMenu>
                                                          </contextMenu>
                                                          <items>
-                                                            <MenuItem mnemonicParsing="false" text="8 binlik" />
-                                                            <MenuItem mnemonicParsing="false" text="25 binlik" />
-                                                            <MenuItem mnemonicParsing="false" text="+90 binlik" />
+                                                            <MenuItem fx:id="firstDegree" mnemonicParsing="false" text="8 Binlik" />
+                                                            <MenuItem fx:id="secondDegree" mnemonicParsing="false" text="25 Binlik" />
+                                                            <MenuItem fx:id="thirdDegree" mnemonicParsing="false" text="40 Binlik" />
+                                                            <MenuItem fx:id="lastDegree" mnemonicParsing="false" text="+70 Binlik" />
                                                          </items>
                                                       </SplitMenuButton>
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar" />
-                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                      <CheckBox fx:id="distributionByArtistsCheckProfit" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox fx:id="distributionByArtistsCheckGiro" mnemonicParsing="false" text="Ciro" />
                                                    </children>
                                                 </VBox>
-                                                <Button mnemonicParsing="false" text="Ara">
+                                                <Button fx:id="distributionByArtists" mnemonicParsing="false" text="Ara">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="stachChart111" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="distributionByArtistsStackChart" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
                                              </xAxis>
@@ -182,19 +190,19 @@
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Başlangıç Tarihi" />
-                                                      <DatePicker />
+                                                      <DatePicker fx:id="distiributionByNameStart" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Bitiş Tarihi" />
-                                                      <DatePicker />
+                                                      <DatePicker fx:id="distiributionByNameEnd" />
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="TOP_CENTER">
                                                    <children>
                                                       <Label text="Sanatçı Adı" />
-                                                      <SplitMenuButton mnemonicParsing="false" prefHeight="24.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                      <SplitMenuButton fx:id="distiributionByNameSplitMenu" mnemonicParsing="false" prefHeight="24.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                                                          <contextMenu>
                                                             <ContextMenu>
                                                                <items>
@@ -202,26 +210,26 @@
                                                                </items>
                                                             </ContextMenu>
                                                          </contextMenu>
-                                                         <items>
-                                                            <MenuItem mnemonicParsing="false" text="......." />
-                                                         </items>
                                                       </SplitMenuButton>
                                                    </children>
                                                 </VBox>
                                                 <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
                                                    <children>
-                                                      <CheckBox mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar" />
-                                                      <CheckBox mnemonicParsing="false" text="Ciro" />
+                                                      <CheckBox fx:id="distiributionByNameCheckProfit" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox fx:id="distiributionByNameCheckGiro" mnemonicParsing="false" text="Ciro" />
                                                    </children>
                                                 </VBox>
-                                                <Button mnemonicParsing="false" text="Ara">
+                                                <Button fx:id="distiributionByName" mnemonicParsing="false" text="Ara">
                                                    <opaqueInsets>
                                                       <Insets />
                                                    </opaqueInsets>
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="stachChart11" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="distirubitonByNameStackChart" layoutY="60.0" AnchorPane.bottomAnchor="178.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
                                              </xAxis>
@@ -336,27 +344,35 @@
                            </items>
                         </ToolBar>
                      </top>
-                     <right>
-                        <TextArea prefHeight="465.0" prefWidth="315.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
-                     </right>
                      <center>
-                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="200.0" prefWidth="209.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TableView prefHeight="460.0" prefWidth="755.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
+                              <TableView layoutX="6.0" layoutY="28.0" prefHeight="291.0" prefWidth="1052.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                                  <columns>
-                                    <TableColumn prefWidth="109.76680946350098" text="Tarih " />
-                                    <TableColumn prefWidth="111.82603454589844" text="Event Tipi" />
-                                    <TableColumn prefWidth="82.03175354003906" text="Ciro" />
-                                    <TableColumn editable="false" prefWidth="82.03175354003906" text="Kar" />
-                                    <TableColumn prefWidth="347.2500305175781" text="Endexler">
+                                    <TableColumn prefWidth="77.04132461547852" text="Tarih " />
+                                    <TableColumn prefWidth="76.0072250366211" text="Event Tipi" />
+                                    <TableColumn prefWidth="64.08268737792969" text="Para Hareketleri">
                                        <columns>
-                                          <TableColumn prefWidth="84.35174560546875" text="Ciro" />
-                                          <TableColumn prefWidth="85.82220458984375" text="Kar" />
-                                          <TableColumn prefWidth="88.88134765625" text="Kişi " />
-                                          <TableColumn prefWidth="101.11865234375" text="Alkol tüketim" />
+                                          <TableColumn prefWidth="41.18110656738281" text="Ciro" />
+                                          <TableColumn editable="false" prefWidth="48.994476318359375" text="Kar" />
+                                          <TableColumn editable="false" prefWidth="47.582183837890625" text="Tip" />
+                                          <TableColumn editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
+                                          <TableColumn editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
+                                          <TableColumn editable="false" prefWidth="101.43997192382812" text="Toplam Masraf" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn editable="false" prefWidth="175.61434936523438" text="Şişe İndirimleri">
+                                       <columns>
+                                          <TableColumn editable="false" prefWidth="84.61007690429688" text="Şişe Sayısı" />
+                                          <TableColumn editable="false" prefWidth="102.389892578125" text="Toplam İndirim" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="326.0" text="Endexler">
+                                       <columns>
+                                          <TableColumn prefWidth="67.65289306640625" text="Ciro E." />
+                                          <TableColumn prefWidth="80.34478759765625" text="Kar E." />
+                                          <TableColumn prefWidth="86.425048828125" text="Kişi E." />
+                                          <TableColumn prefWidth="87.0" text="Alkol Tüketim E." />
                                        </columns>
                                     </TableColumn>
                                  </columns>
@@ -364,60 +380,93 @@
                            </children>
                         </AnchorPane>
                      </center>
+                     <bottom>
+                        <TextArea prefHeight="143.0" prefWidth="1068.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
+                     </bottom>
                   </BorderPane>
                </content>
             </TitledPane>
             <TitledPane prefHeight="641.0" text="Tüm Geceler">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
-                     <top>
-                        <HBox alignment="CENTER" prefHeight="36.0" prefWidth="1068.0" style="-: gray;" BorderPane.alignment="CENTER">
-                           <children>
-                              <Label text="Tarih    " />
-                              <DatePicker>
-                                 <HBox.margin>
-                                    <Insets right="50.0" />
-                                 </HBox.margin>
-                              </DatePicker>
-                              <Button mnemonicParsing="false" text="Bilgileri pdf olarak çıkart">
-                                 <HBox.margin>
-                                    <Insets left="200.0" />
-                                 </HBox.margin>
-                              </Button>
-                           </children>
-                           <BorderPane.margin>
-                              <Insets />
-                           </BorderPane.margin>
-                        </HBox>
-                     </top>
                      <bottom>
-                        <TextArea prefHeight="318.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
+                        <TextArea prefHeight="102.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
                      </bottom>
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TableView prefHeight="202.0" prefWidth="1058.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <columnResizePolicy>
-                                    <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                 </columnResizePolicy>
+                              <TableView fx:id="allNightTableView" prefHeight="202.0" prefWidth="1058.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">                                 
                                  <columns>
-                                    <TableColumn prefWidth="109.76680946350098" text="Tarih " />
-                                    <TableColumn prefWidth="111.82603454589844" text="Event Tipi" />
-                                    <TableColumn prefWidth="82.03175354003906" text="Ciro" />
-                                    <TableColumn editable="false" prefWidth="82.03175354003906" text="Kar" />
-                                    <TableColumn prefWidth="356.0000305175781" text="Endexler">
+                                    <TableColumn fx:id="dateColumn" editable="false" prefWidth="105.0" text="Tarih " />
+                                    <TableColumn fx:id="eventColumn" editable="false" prefWidth="97.0" text="Event Tipi" />
+                                    <TableColumn fx:id="eventColumn16" editable="false" prefWidth="97.0" text="Kişi Sayısı" />
+                                    <TableColumn fx:id="moneyMoventColumn" editable="false" minWidth="50.0" prefWidth="336.0" text="Para Hareketleri">
                                        <columns>
-                                          <TableColumn prefWidth="84.35174560546875" text="Ciro" />
-                                          <TableColumn prefWidth="85.82220458984375" text="Kar" />
-                                          <TableColumn prefWidth="88.88134765625" text="Kişi " />
-                                          <TableColumn prefWidth="101.11865234375" text="Alkol tüketim" />
+                                          <TableColumn fx:id="giroColumn" editable="false" prefWidth="41.18110656738281" text="Ciro" />
+                                          <TableColumn fx:id="profitColumn" editable="false" prefWidth="48.994476318359375" text="Kar" />
+                                          <TableColumn fx:id="tipColumn" editable="false" prefWidth="47.582183837890625" text="Tip" />
+                                          <TableColumn fx:id="dontPayColumn" editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
+                                          <TableColumn fx:id="groupEntryColumn" editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
+                                          <TableColumn fx:id="totalCostColumn" editable="false" prefWidth="96.0538330078125" text="Toplam Masraf" />
                                        </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="moneyMovementSmaller" mnemonicParsing="false" />
+                                       </graphic></TableColumn>
+                                    <TableColumn fx:id="discountColumn" editable="false" minWidth="50.0" prefWidth="272.7325439453125" text="Şişe İndirimleri">
+                                       <columns>
+                                          <TableColumn fx:id="bottleColumn" editable="false" prefWidth="92.0" text="Şişe Sayısı" />
+                                          <TableColumn fx:id="sumOfDiscountColumn" editable="false" prefWidth="96.0" text="Toplam İndirim" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="discountSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="endexColumn" minWidth="50.0" prefWidth="326.0" text="Endexler">
+                                       <columns>
+                                          <TableColumn fx:id="giroEColumn" editable="false" prefWidth="69.75762939453125" text="Ciro" />
+                                          <TableColumn fx:id="profitEColumn" editable="false" prefWidth="82.24237060546875" text="Kar" />
+                                          <TableColumn fx:id="numberOfPersonColumn" editable="false" prefWidth="86.425048828125" text="Kişi " />
+                                          <TableColumn fx:id="drunkColumn" editable="false" prefWidth="86.97222900390625" text="Alkol Tüketim" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="endexSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="salesColumn" editable="false" prefWidth="359.8487854003906" text="Satışlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn11" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn12" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn13" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                          <TableColumn fx:id="eventColumn14" editable="false" prefWidth="81.19830322265625" text="Sigara" />
+                                          <TableColumn fx:id="eventColumn15" editable="false" prefWidth="65.49346923828125" text="Bardak" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="salesSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="treatColumn" editable="false" prefWidth="359.8487854003906" text="İkramlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn111" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn121" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn131" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="treatSmaller" mnemonicParsing="false" />
+                                       </graphic>
                                     </TableColumn>
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
                      </center>
+                     <top>
+                        <AnchorPane prefHeight="38.0" prefWidth="1068.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button layoutX="146.0" layoutY="105.0" mnemonicParsing="false" text="Tümünü Pdf olarak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                              <Button layoutX="156.0" layoutY="115.0" mnemonicParsing="false" text="Seçili Günü Pdf olrak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                     </top>
                   </BorderPane>
                </content>
             </TitledPane>
