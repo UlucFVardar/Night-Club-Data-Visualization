@@ -6,10 +6,14 @@
 package dataVisilation;
 
 
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -30,7 +34,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Pair;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 
 /**
@@ -142,6 +149,31 @@ public class FXMLDocumentController implements Initializable {
 
             }
 
+        });
+          addnightexcel.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                FileChooser chooser = new FileChooser();
+                chooser.setInitialDirectory(new File("src"));
+                chooser.setTitle("Open File");
+                Stage stage = new Stage();
+                File file = chooser.showOpenDialog(stage);
+                if (file == null) {
+                    return;
+                }
+                
+                try {
+                    myExcelFile allNights = new myExcelFile( file.getAbsolutePath() );
+                    System.out.println("aldım");
+                    
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (InvalidFormatException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+                
+            }
         });
     
 
