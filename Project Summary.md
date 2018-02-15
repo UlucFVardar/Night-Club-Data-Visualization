@@ -1,12 +1,12 @@
 SoftWare_Engineering_Project
-This project for a Night Club data visilation and otomation system.
+This project for a Night Club data visualization and otomation system.
 We're try to read all excel input from Club's data and try to reach knowledge of Data
 *There are  4  part
 -
 *Console App- this app writen by Java and Javafx 
 			-this app has to parse all excel information and has to calculate all needed values 
 			-then using api's all calculated fields must be upload the database by this console app
-			-also all data visilation operations are here
+			-also all data visualization operations are here
 *Database Design-
 			-in this part after all needed information taken from console app 
 			-all information about data insert to database 
