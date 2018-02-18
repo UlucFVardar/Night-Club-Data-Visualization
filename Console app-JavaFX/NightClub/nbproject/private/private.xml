@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visilation/Console%20app-JavaFX/NightClub/src/dataVisilation/DataVisilation.java</file>
-            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visilation/Console%20app-JavaFX/NightClub/src/dataVisilation/Artist.java</file>
-            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visilation/Console%20app-JavaFX/NightClub/src/dataVisilation/EventNight.java</file>
-            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visilation/Console%20app-JavaFX/NightClub/src/dataVisilation/myExcelFile.java</file>
-            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visilation/Console%20app-JavaFX/NightClub/src/dataVisilation/FXMLDocumentController.java</file>
+            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visualization/Console%20app-JavaFX/NightClub/src/dataVisualization/FXMLDocument.fxml</file>
+            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visualization/Console%20app-JavaFX/NightClub/src/dataVisualization/DataVisualization.java</file>
+            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visualization/Console%20app-JavaFX/NightClub/src/dataVisualization/EventNight.java</file>
+            <file>file:/Users/uluc/Desktop/SoftWare%20Engineering/Night-Club-Data-Visualization/Console%20app-JavaFX/NightClub/src/dataVisualization/FXMLDocumentController.java</file>
         </group>
     </open-files>
 </project-private>

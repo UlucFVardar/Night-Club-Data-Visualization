@@ -1,0 +1,539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1182.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dataVisualization.FXMLDocumentController">
+   <center>
+      <Accordion prefHeight="665.0" prefWidth="1090.0" BorderPane.alignment="CENTER">
+        <panes>
+          <TitledPane minWidth="500.0" prefHeight="590.0" prefWidth="1090.0" snapToPixel="false" style="-fx-background-color: gray;" text="Tüm Grafikler">
+               <content>
+                  <AnchorPane fx:id="asd" cacheHint="SCALE" focusTraversable="true" minWidth="100.0" prefHeight="613.0" prefWidth="1090.0" style="-fx-background-color: gray;">
+                     <children>
+                        <TabPane fx:id="gunlukCiroTabPane" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="112.0" layoutY="54.0" minWidth="350.0" prefWidth="350.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="10.0">
+                          <tabs>
+                            <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlük Ciro Dağılımı">
+                              <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <PieChart fx:id="DailyTurnoverDistribution" layoutX="3.0" layoutY="115.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="123.0" />
+                                          <Label fx:id="DailyTurnoverDistributionLabel" />
+                                          <DatePicker fx:id="datePiccerForDaylyCiro" layoutX="76.0" layoutY="37.0" />
+                                          <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
+                                          <Label fx:id="datePiccerLabelForDaylyCiro" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                          <Label fx:id="giroLabel" layoutX="34.0" layoutY="99.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                          <Label fx:id="eventLabel" layoutX="37.0" layoutY="519.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlük Kar Dağılımı">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <PieChart fx:id="DailyProfitDistiribution" layoutX="13.0" layoutY="125.0" prefHeight="400.0" prefWidth="292.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="3.0" AnchorPane.topAnchor="123.0" />
+                                          <Label fx:id="dailyProfitValue" />
+                                          <DatePicker fx:id="datePiccerForDaylyProfit" layoutX="76.0" layoutY="37.0" />
+                                          <Label layoutX="21.0" layoutY="74.0" prefHeight="21.0" prefWidth="176.0" text="Seçmiş olduğunuz Tarih : " />
+                                          <Label fx:id="datePiccerLabelForDaylyProfit" layoutX="205.0" layoutY="74.0" prefHeight="21.0" prefWidth="126.0" />
+                                          <Label fx:id="profitLabel" layoutX="44.0" layoutY="109.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" AnchorPane.topAnchor="100.0" />
+                                          <Label fx:id="eventLabel1" layoutX="47.0" layoutY="529.0" prefHeight="17.0" prefWidth="240.0" AnchorPane.bottomAnchor="7.0" AnchorPane.leftAnchor="30.0" AnchorPane.rightAnchor="30.0" />
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                        <TabPane cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="415.0" layoutY="2.0" minWidth="300.0" prefWidth="600.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+                          <tabs>
+                            <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlere göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker fx:id="evaluationByDayStart" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker fx:id="evaluationByDayEnd" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox fx:id="evaluationByDayProfitCheck" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox fx:id="evaluationByDayGiroCheck" mnemonicParsing="false" text="Ciro" />
+                                                   </children></VBox>
+                                                <Button fx:id="evaluationByDayBtn" mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="evalutionByDayStackChart" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                            <xAxis>
+                                              <CategoryAxis fx:id="evelation" side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart fx:id="DailyCheckLine" layoutX="16.0" layoutY="333.0" prefHeight="200.0" prefWidth="785.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                            </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçı Tipine göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane prefHeight="600.0" style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker fx:id="distributionByArtistsStart" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker fx:id="distributionByArtistsEnd" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="SanatçıTipi" />
+                                                      <SplitMenuButton fx:id="distributionByArtistsSplitMenu" mnemonicParsing="false" prefHeight="27.0" prefWidth="110.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                               </items>
+                                                            </ContextMenu>
+                                                         </contextMenu>
+                                                         <items>
+                                                            <MenuItem fx:id="firstDegree" mnemonicParsing="false" text="8 Binlik" />
+                                                            <MenuItem fx:id="secondDegree" mnemonicParsing="false" text="25 Binlik" />
+                                                            <MenuItem fx:id="thirdDegree" mnemonicParsing="false" text="40 Binlik" />
+                                                            <MenuItem fx:id="lastDegree" mnemonicParsing="false" text="+70 Binlik" />
+                                                         </items>
+                                                      </SplitMenuButton>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox fx:id="distributionByArtistsCheckProfit" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox fx:id="distributionByArtistsCheckGiro" mnemonicParsing="false" text="Ciro" />
+                                                   </children>
+                                                </VBox>
+                                                <Button fx:id="distributionByArtists" mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="distributionByArtistsStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart fx:id="lineChartByArtist" layoutX="146.0" layoutY="245.0" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçılara göre Degerlendirme ">
+                                 <content>
+                                    <AnchorPane style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Başlangıç Tarihi" />
+                                                      <DatePicker fx:id="distiributionByNameStart" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Bitiş Tarihi" />
+                                                      <DatePicker fx:id="distiributionByNameEnd" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="TOP_CENTER">
+                                                   <children>
+                                                      <Label text="Sanatçı Adı" />
+                                                      <SplitMenuButton fx:id="distiributionByNameSplitMenu" mnemonicParsing="false" prefHeight="24.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                                         <contextMenu>
+                                                            <ContextMenu>
+                                                               <items>
+                                                                  <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                                               </items>
+                                                            </ContextMenu>
+                                                         </contextMenu>
+                                                      </SplitMenuButton>
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0">
+                                                   <children>
+                                                      <CheckBox fx:id="distiributionByNameCheckProfit" mnemonicParsing="false" prefHeight="18.0" prefWidth="51.0" text="Kar">
+                                                         <VBox.margin>
+                                                            <Insets left="3.0" />
+                                                         </VBox.margin></CheckBox>
+                                                      <CheckBox fx:id="distiributionByNameCheckGiro" mnemonicParsing="false" text="Ciro" />
+                                                   </children>
+                                                </VBox>
+                                                <Button fx:id="distiributionByName" mnemonicParsing="false" text="Ara">
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </Button>
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="distirubitonByNameStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart fx:id="lineChartByName" layoutX="154.0" layoutY="245.0" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <xAxis>
+                                              <CategoryAxis side="BOTTOM" />
+                                            </xAxis>
+                                            <yAxis>
+                                              <NumberAxis side="LEFT" />
+                                            </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sırıtan Günler">
+                                 <content>
+                                    <AnchorPane style="-fx-background-color: #fff;">
+                                       <children>
+                                          <ToolBar minHeight="60.0" prefHeight="60.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <items>
+                                                <VBox alignment="TOP_CENTER" />
+                                                <VBox alignment="TOP_CENTER" />
+                                                <VBox alignment="TOP_CENTER" />
+                                                <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0" />
+                                             </items>
+                                          </ToolBar>
+                                          <StackedBarChart fx:id="anomaliesStack" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </StackedBarChart>
+                                          <LineChart fx:id="anomaliesLine" layoutX="154.0" layoutY="245.0" prefHeight="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </LineChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </TitledPane>
+          <TitledPane text="Sorgu Menüsü">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <ToolBar prefHeight="98.0" prefWidth="1068.0" BorderPane.alignment="CENTER">
+                           <items>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Ciro" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kar" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Ciro Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kar Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Kişi Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
+                                 <children>
+                                    <Label text="Alkol tüketim Endex" />
+                                    <TextField promptText="Max-" />
+                                    <TextField promptText="Min-" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets left="50.0" right="50.0" />
+                                 </opaqueInsets>
+                              </VBox>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="SanatçıTipi" />
+                                    <SplitMenuButton mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                       <contextMenu>
+                                          <ContextMenu>
+                                             <items>
+                                                <MenuItem mnemonicParsing="false" text="Unspecified Action" />
+                                             </items>
+                                          </ContextMenu>
+                                       </contextMenu>
+                                       <items>
+                                          <MenuItem mnemonicParsing="false" text="8 binlik" />
+                                          <MenuItem mnemonicParsing="false" text="25 binlik" />
+                                          <MenuItem mnemonicParsing="false" text="+90 binlik" />
+                                       </items>
+                                    </SplitMenuButton>
+                                 </children>
+                              </VBox>
+                              <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="68.0" text="Ara" />
+                           </items>
+                        </ToolBar>
+                     </top>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="209.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView layoutX="6.0" layoutY="28.0" prefHeight="291.0" prefWidth="1052.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                                 <columns>
+                                    <TableColumn prefWidth="77.04132461547852" text="Tarih " />
+                                    <TableColumn prefWidth="76.0072250366211" text="Event Tipi" />
+                                    <TableColumn prefWidth="64.08268737792969" text="Para Hareketleri">
+                                       <columns>
+                                          <TableColumn prefWidth="41.18110656738281" text="Ciro" />
+                                          <TableColumn editable="false" prefWidth="48.994476318359375" text="Kar" />
+                                          <TableColumn editable="false" prefWidth="47.582183837890625" text="Tip" />
+                                          <TableColumn editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
+                                          <TableColumn editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
+                                          <TableColumn editable="false" prefWidth="101.43997192382812" text="Toplam Masraf" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn editable="false" prefWidth="175.61434936523438" text="Şişe İndirimleri">
+                                       <columns>
+                                          <TableColumn editable="false" prefWidth="84.61007690429688" text="Şişe Sayısı" />
+                                          <TableColumn editable="false" prefWidth="102.389892578125" text="Toplam İndirim" />
+                                       </columns>
+                                    </TableColumn>
+                                    <TableColumn prefWidth="326.0" text="Endexler">
+                                       <columns>
+                                          <TableColumn prefWidth="67.65289306640625" text="Ciro E." />
+                                          <TableColumn prefWidth="80.34478759765625" text="Kar E." />
+                                          <TableColumn prefWidth="86.425048828125" text="Kişi E." />
+                                          <TableColumn prefWidth="87.0" text="Alkol Tüketim E." />
+                                       </columns>
+                                    </TableColumn>
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <bottom>
+                        <TextArea prefHeight="143.0" prefWidth="1068.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
+                     </bottom>
+                  </BorderPane>
+               </content>
+            </TitledPane>
+            <TitledPane prefHeight="641.0" text="Tüm Geceler">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <bottom>
+                        <TextArea prefHeight="102.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
+                     </bottom>
+                     <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <TableView fx:id="allNightTableView" prefHeight="202.0" prefWidth="1058.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">                                 
+                                 <columns>
+                                    <TableColumn fx:id="dateColumn" editable="false" prefWidth="105.0" text="Tarih " />
+                                    <TableColumn fx:id="eventColumn" editable="false" prefWidth="97.0" text="Event Tipi" />
+                                    <TableColumn fx:id="eventColumn16" editable="false" prefWidth="97.0" text="Kişi Sayısı" />
+                                    <TableColumn fx:id="moneyMoventColumn" editable="false" minWidth="50.0" prefWidth="336.0" text="Para Hareketleri">
+                                       <columns>
+                                          <TableColumn fx:id="giroColumn" editable="false" prefWidth="41.18110656738281" text="Ciro" />
+                                          <TableColumn fx:id="profitColumn" editable="false" prefWidth="48.994476318359375" text="Kar" />
+                                          <TableColumn fx:id="tipColumn" editable="false" prefWidth="47.582183837890625" text="Tip" />
+                                          <TableColumn fx:id="dontPayColumn" editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
+                                          <TableColumn fx:id="groupEntryColumn" editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
+                                          <TableColumn fx:id="artistCostColumn" editable="false" prefWidth="96.0538330078125" text="Sanatçı Maliyeti" />
+                                          <TableColumn fx:id="totalCostColumn" editable="false" prefWidth="96.0538330078125" text="Toplam Masraf" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="moneyMovementSmaller" mnemonicParsing="false" />
+                                       </graphic></TableColumn>
+                                    <TableColumn fx:id="discountColumn" editable="false" minWidth="50.0" prefWidth="272.7325439453125" text="Şişe İndirimleri">
+                                       <columns>
+                                          <TableColumn fx:id="bottleColumn" editable="false" prefWidth="92.0" text="Şişe Sayısı" />
+                                          <TableColumn fx:id="sumOfDiscountColumn" editable="false" prefWidth="96.0" text="Toplam İndirim" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="discountSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="endexColumn" minWidth="50.0" prefWidth="170.0" text="Endexler">
+                                       <columns>
+                                          <TableColumn fx:id="giroEColumn" editable="false" prefWidth="86.0" text="Genel Endex" />
+                                          <TableColumn fx:id="drunkColumn" editable="false" prefWidth="71.0" text="Alkol Tüketim" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="endexSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="salesColumn" editable="false" prefWidth="333.0" text="Satışlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn11" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn12" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn13" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                          <TableColumn fx:id="eventColumn14" editable="false" prefWidth="81.19830322265625" text="Sigara" />
+                                          <TableColumn fx:id="eventColumn15" editable="false" prefWidth="65.49346923828125" text="Bardak" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="salesSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="treatColumn" editable="false" prefWidth="359.8487854003906" text="İkramlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn111" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn121" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn131" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="treatSmaller" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                 </columns>
+                              </TableView>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                     <top>
+                        <AnchorPane prefHeight="38.0" prefWidth="1068.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button layoutX="146.0" layoutY="105.0" mnemonicParsing="false" text="Tümünü Pdf olarak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                              <Button layoutX="156.0" layoutY="115.0" mnemonicParsing="false" text="Seçili Günü Pdf olrak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                           </children>
+                        </AnchorPane>
+                     </top>
+                  </BorderPane>
+               </content>
+            </TitledPane>
+        </panes>
+      </Accordion>
+   </center>
+   <bottom>
+      <AnchorPane prefHeight="5.0" prefWidth="1090.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </bottom>
+   <right>
+      <AnchorPane prefHeight="824.0" prefWidth="5.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </right>
+   <left>
+      <AnchorPane prefHeight="824.0" prefWidth="5.0" style="-fx-background-color: gray;" BorderPane.alignment="CENTER" />
+   </left>
+   <top>
+      <MenuBar prefHeight="30.0" prefWidth="1100.0" BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Dosya">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Yorum Ekle" />
+                  <MenuItem mnemonicParsing="false" text="Yorumları Göster" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Ekle">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="Swarm Excel Dosysı Ekle" />
+              <MenuItem fx:id="addnightexcel" mnemonicParsing="false" text="Excel Dosyası Ekle" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Yardım">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
