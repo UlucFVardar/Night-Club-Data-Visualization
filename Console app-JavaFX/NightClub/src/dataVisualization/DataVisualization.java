@@ -24,6 +24,7 @@ public class DataVisualization extends Application {
         stage.setScene(scene);
         stage.sizeToScene();
         stage.sizeToScene();
+        
         stage.show();
     }
 

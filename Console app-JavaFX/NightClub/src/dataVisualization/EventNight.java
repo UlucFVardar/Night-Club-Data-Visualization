@@ -210,8 +210,7 @@ public class EventNight {
 
     public void setArtist(Artist artist, double cost) {
         this.artist = artist;
-        this.artistCost=cost;
-        
+        this.artistCost=cost;        
         if(cost>4500 && cost<15000){
             this.eventType="8 Binlik";
         }else if(cost>15001 && cost<30000){
@@ -224,7 +223,9 @@ public class EventNight {
     }
 
     public double getArtistCost() {
-        return artistCost;
+        if (this.artist!=null)
+            return artistCost;
+        return 0.0;
     }
 
     public double getGroupEntryFee() {
@@ -239,8 +240,6 @@ public class EventNight {
         return soldTickets;
     }
 
-    void setArtist(Artist newArtist) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+  
  
 }

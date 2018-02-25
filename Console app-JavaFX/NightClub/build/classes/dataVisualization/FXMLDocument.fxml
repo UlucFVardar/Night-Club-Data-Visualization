@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.chart.*?>
@@ -12,7 +13,7 @@
 
 <BorderPane fx:id="borderpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="1182.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dataVisualization.FXMLDocumentController">
    <center>
-      <Accordion prefHeight="665.0" prefWidth="1090.0" BorderPane.alignment="CENTER">
+      <Accordion fx:id="accordion" prefHeight="665.0" prefWidth="1090.0" BorderPane.alignment="CENTER">
         <panes>
           <TitledPane minWidth="500.0" prefHeight="590.0" prefWidth="1090.0" snapToPixel="false" style="-fx-background-color: gray;" text="Tüm Grafikler">
                <content>
@@ -52,9 +53,9 @@
                               </Tab>
                           </tabs>
                         </TabPane>
-                        <TabPane cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="415.0" layoutY="2.0" minWidth="300.0" prefWidth="600.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
+                        <TabPane fx:id="tabPane" cache="true" cacheHint="SCALE_AND_ROTATE" layoutX="415.0" layoutY="2.0" minWidth="300.0" prefWidth="600.0" snapToPixel="false" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="360.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="10.0">
                           <tabs>
-                            <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlere göre Degerlendirme ">
+                            <Tab fx:id="tab1" style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Günlere göre Degerlendirme ">
                                  <content>
                                     <AnchorPane style="-fx-background-color: #fff;">
                                        <children>
@@ -87,7 +88,7 @@
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="evalutionByDayStackChart" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="evalutionByDayStackChart" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                                             <xAxis>
                                               <CategoryAxis fx:id="evelation" side="BOTTOM" />
                                             </xAxis>
@@ -103,11 +104,17 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </LineChart>
+                                          <Label fx:id="informationLabelDay" layoutX="175.0" layoutY="51.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                                          <Button fx:id="showDeeply" disable="true" layoutX="189.0" layoutY="71.0" mnemonicParsing="false" prefHeight="15.0" text="Ayrıntılı Göster" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                  </content>
                             </Tab>
-                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçı Tipine göre Degerlendirme ">
+                              <Tab fx:id="tab2" style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçı Tipine göre Degerlendirme ">
                                  <content>
                                     <AnchorPane prefHeight="600.0" style="-fx-background-color: #fff;">
                                        <children>
@@ -161,7 +168,7 @@
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="distributionByArtistsStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="distributionByArtistsStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
                                              </xAxis>
@@ -177,11 +184,17 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </LineChart>
+                                          <Label fx:id="informationLabelType" layoutX="185.0" layoutY="61.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                                          <Button fx:id="showDeeply1" disable="true" layoutX="199.0" layoutY="81.0" mnemonicParsing="false" prefHeight="15.0" text="Ayrıntılı Göster" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçılara göre Degerlendirme ">
+                              <Tab fx:id="tab3" style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sanatçılara göre Degerlendirme ">
                                  <content>
                                     <AnchorPane style="-fx-background-color: #fff;">
                                        <children>
@@ -229,7 +242,7 @@
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="distirubitonByNameStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="distirubitonByNameStackChart" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
                                              </xAxis>
@@ -245,11 +258,17 @@
                                               <NumberAxis side="LEFT" />
                                             </yAxis>
                                           </LineChart>
+                                          <Label fx:id="informationLabelName" layoutX="302.0" layoutY="101.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                                          <Button fx:id="showDeeply2" disable="true" layoutX="199.0" layoutY="81.0" mnemonicParsing="false" prefHeight="15.0" text="Ayrıntılı Göster" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                  </content>
                               </Tab>
-                              <Tab style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sırıtan Günler">
+                              <Tab fx:id="tab4" style="-fx-font-size: 14px;  -fx-font-weight: bold;" text="Sırıtan Günler">
                                  <content>
                                     <AnchorPane style="-fx-background-color: #fff;">
                                        <children>
@@ -261,7 +280,7 @@
                                                 <VBox alignment="CENTER" prefHeight="27.0" prefWidth="86.0" />
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="anomaliesStack" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="60.0">
+                                          <StackedBarChart fx:id="anomaliesStack" layoutY="60.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                                              <xAxis>
                                                 <CategoryAxis side="BOTTOM" />
                                              </xAxis>
@@ -277,6 +296,12 @@
                                                 <NumberAxis side="LEFT" />
                                              </yAxis>
                                           </LineChart>
+                                          <Label fx:id="informationLabelAnomolies" layoutX="72.0" layoutY="72.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+                                          <Button fx:id="showDeeply3" disable="true" layoutX="199.0" layoutY="81.0" mnemonicParsing="false" prefHeight="15.0" text="Ayrıntılı Göster" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0">
+                                             <font>
+                                                <Font size="9.0" />
+                                             </font>
+                                          </Button>
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -418,7 +443,7 @@
                   </BorderPane>
                </content>
             </TitledPane>
-            <TitledPane prefHeight="641.0" text="Tüm Geceler">
+            <TitledPane fx:id="allNight" prefHeight="641.0" text="Tüm Geceler">
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <bottom>
@@ -518,13 +543,11 @@
         <menus>
           <Menu mnemonicParsing="false" text="Dosya">
             <items>
-              <MenuItem mnemonicParsing="false" text="Yorum Ekle" />
-                  <MenuItem mnemonicParsing="false" text="Yorumları Göster" />
+                  <MenuItem mnemonicParsing="false" text="Yorumlar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ekle">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Swarm Excel Dosysı Ekle" />
               <MenuItem fx:id="addnightexcel" mnemonicParsing="false" text="Excel Dosyası Ekle" />
             </items>
           </Menu>
