@@ -88,7 +88,7 @@
                                                 </Button>
                                              </items>
                                           </ToolBar>
-                                          <StackedBarChart fx:id="evalutionByDayStackChart" layoutY="60.0" minHeight="0.0" minWidth="0.0" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                                          <StackedBarChart fx:id="evalutionByDayStackChart" alternativeColumnFillVisible="true" cache="true" focusTraversable="true" layoutY="60.0" minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="272.0" prefWidth="705.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                                             <xAxis>
                                               <CategoryAxis fx:id="evelation" side="BOTTOM" />
                                             </xAxis>
@@ -324,15 +324,15 @@
                               <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
                                  <children>
                                     <Label text="Ciro" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
+                                    <TextField fx:id="GMax" promptText="Max-" />
+                                    <TextField fx:id="GMin" promptText="Min-" />
                                  </children>
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
                                  <children>
                                     <Label text="Kar" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
+                                    <TextField fx:id="PMax" promptText="Max-" />
+                                    <TextField fx:id="PMin" promptText="Min-" />
                                  </children>
                                  <opaqueInsets>
                                     <Insets left="50.0" right="50.0" />
@@ -340,29 +340,9 @@
                               </VBox>
                               <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
                                  <children>
-                                    <Label text="Ciro Endex" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets left="50.0" right="50.0" />
-                                 </opaqueInsets>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
-                                 <children>
-                                    <Label text="Kar Endex" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
-                                 </children>
-                                 <opaqueInsets>
-                                    <Insets left="50.0" right="50.0" />
-                                 </opaqueInsets>
-                              </VBox>
-                              <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
-                                 <children>
-                                    <Label text="Kişi Endex" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
+                                    <Label text="Genel Endex" />
+                                    <TextField fx:id="GEMax" promptText="Max-" />
+                                    <TextField fx:id="GEMin" promptText="Min-" />
                                  </children>
                                  <opaqueInsets>
                                     <Insets left="50.0" right="50.0" />
@@ -371,8 +351,8 @@
                               <VBox alignment="CENTER" prefHeight="0.0" prefWidth="138.0">
                                  <children>
                                     <Label text="Alkol tüketim Endex" />
-                                    <TextField promptText="Max-" />
-                                    <TextField promptText="Min-" />
+                                    <TextField fx:id="AMax" promptText="Max-" />
+                                    <TextField fx:id="AMin" promptText="Min-" />
                                  </children>
                                  <opaqueInsets>
                                     <Insets left="50.0" right="50.0" />
@@ -381,7 +361,7 @@
                               <VBox alignment="CENTER">
                                  <children>
                                     <Label text="SanatçıTipi" />
-                                    <SplitMenuButton mnemonicParsing="false" prefHeight="23.0" prefWidth="97.0" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
+                                    <SplitMenuButton fx:id="searchTypeSplit" mnemonicParsing="false" prefHeight="27.0" prefWidth="136.0" text="Sınırlama Yok" textAlignment="CENTER" textOverrun="CLIP" wrapText="true">
                                        <contextMenu>
                                           <ContextMenu>
                                              <items>
@@ -390,47 +370,80 @@
                                           </ContextMenu>
                                        </contextMenu>
                                        <items>
-                                          <MenuItem mnemonicParsing="false" text="8 binlik" />
-                                          <MenuItem mnemonicParsing="false" text="25 binlik" />
-                                          <MenuItem mnemonicParsing="false" text="+90 binlik" />
+                                          <MenuItem mnemonicParsing="false" text="8 Binlik" />
+                                          <MenuItem mnemonicParsing="false" text="25 Binlik" />
+                                          <MenuItem mnemonicParsing="false" text="40 Binlik" />
+                                          <MenuItem mnemonicParsing="false" text="+70 Binlik" />
+                                          <MenuItem mnemonicParsing="false" text="Sınırlama Yok" />
                                        </items>
                                     </SplitMenuButton>
                                  </children>
                               </VBox>
-                              <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="68.0" text="Ara" />
+                              <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="43.0" prefWidth="68.0" text="Ara" />
                            </items>
                         </ToolBar>
                      </top>
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="209.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TableView layoutX="6.0" layoutY="28.0" prefHeight="291.0" prefWidth="1052.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                              <TableView fx:id="allNightTableView1" layoutX="10.0" layoutY="10.0" prefHeight="202.0" prefWidth="1058.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                                  <columns>
-                                    <TableColumn prefWidth="77.04132461547852" text="Tarih " />
-                                    <TableColumn prefWidth="76.0072250366211" text="Event Tipi" />
-                                    <TableColumn prefWidth="64.08268737792969" text="Para Hareketleri">
+                                    <TableColumn fx:id="dateColumn1" editable="false" prefWidth="105.0" text="Tarih " />
+                                    <TableColumn fx:id="eventColumn1" editable="false" prefWidth="97.0" text="Event Tipi" />
+                                    <TableColumn fx:id="eventColumn161" editable="false" prefWidth="97.0" sortable="false" text="Kişi Sayısı" />
+                                    <TableColumn fx:id="moneyMoventColumn1" editable="false" minWidth="50.0" prefWidth="336.0" sortable="false" text="Para Hareketleri">
                                        <columns>
-                                          <TableColumn prefWidth="41.18110656738281" text="Ciro" />
-                                          <TableColumn editable="false" prefWidth="48.994476318359375" text="Kar" />
-                                          <TableColumn editable="false" prefWidth="47.582183837890625" text="Tip" />
-                                          <TableColumn editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
-                                          <TableColumn editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
-                                          <TableColumn editable="false" prefWidth="101.43997192382812" text="Toplam Masraf" />
+                                          <TableColumn fx:id="giroColumn1" editable="false" prefWidth="41.18110656738281" text="Ciro" />
+                                          <TableColumn fx:id="profitColumn1" editable="false" prefWidth="48.994476318359375" text="Kar" />
+                                          <TableColumn fx:id="tipColumn1" editable="false" prefWidth="47.582183837890625" text="Tip" />
+                                          <TableColumn fx:id="dontPayColumn1" editable="false" prefWidth="70.98336791992188" text="Ödenmez" />
+                                          <TableColumn fx:id="groupEntryColumn1" editable="false" prefWidth="75.01663208007812" text="Grup Girişi" />
+                                          <TableColumn fx:id="artistCostColumn1" editable="false" prefWidth="96.0538330078125" text="Sanatçı Maliyeti" />
+                                          <TableColumn fx:id="totalCostColumn1" editable="false" prefWidth="96.0538330078125" text="Toplam Masraf" />
                                        </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="moneyMovementSmaller1" mnemonicParsing="false" />
+                                       </graphic>
                                     </TableColumn>
-                                    <TableColumn editable="false" prefWidth="175.61434936523438" text="Şişe İndirimleri">
+                                    <TableColumn fx:id="discountColumn1" editable="false" minWidth="50.0" prefWidth="272.7325439453125" text="Şişe İndirimleri">
                                        <columns>
-                                          <TableColumn editable="false" prefWidth="84.61007690429688" text="Şişe Sayısı" />
-                                          <TableColumn editable="false" prefWidth="102.389892578125" text="Toplam İndirim" />
+                                          <TableColumn fx:id="bottleColumn1" editable="false" prefWidth="92.0" text="Şişe Sayısı" />
+                                          <TableColumn fx:id="sumOfDiscountColumn1" editable="false" prefWidth="96.0" text="Toplam İndirim" />
                                        </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="discountSmaller1" mnemonicParsing="false" />
+                                       </graphic>
                                     </TableColumn>
-                                    <TableColumn prefWidth="326.0" text="Endexler">
+                                    <TableColumn fx:id="endexColumn1" minWidth="50.0" prefWidth="170.0" text="Endexler">
                                        <columns>
-                                          <TableColumn prefWidth="67.65289306640625" text="Ciro E." />
-                                          <TableColumn prefWidth="80.34478759765625" text="Kar E." />
-                                          <TableColumn prefWidth="86.425048828125" text="Kişi E." />
-                                          <TableColumn prefWidth="87.0" text="Alkol Tüketim E." />
+                                          <TableColumn fx:id="giroEColumn1" editable="false" prefWidth="86.0" text="Genel Endex" />
+                                          <TableColumn fx:id="drunkColumn1" editable="false" prefWidth="71.0" text="Alkol Tüketim" />
                                        </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="endexSmaller1" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="salesColumn1" editable="false" prefWidth="333.0" text="Satışlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn111" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn121" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn131" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                          <TableColumn fx:id="eventColumn141" editable="false" prefWidth="81.19830322265625" text="Sigara" />
+                                          <TableColumn fx:id="eventColumn151" editable="false" prefWidth="65.49346923828125" text="Bardak" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="salesSmaller1" mnemonicParsing="false" />
+                                       </graphic>
+                                    </TableColumn>
+                                    <TableColumn fx:id="treatColumn1" editable="false" prefWidth="359.8487854003906" text="İkramlar">
+                                       <columns>
+                                          <TableColumn fx:id="eventColumn1111" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn1211" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn1311" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                       </columns>
+                                       <graphic>
+                                          <RadioButton fx:id="treatSmaller1" mnemonicParsing="false" />
+                                       </graphic>
                                     </TableColumn>
                                  </columns>
                               </TableView>
@@ -438,7 +451,7 @@
                         </AnchorPane>
                      </center>
                      <bottom>
-                        <TextArea prefHeight="143.0" prefWidth="1068.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
+                        <TextArea fx:id="textArea1" prefHeight="143.0" prefWidth="1068.0" promptText="Seçili Güne Not Ekleyin" BorderPane.alignment="CENTER" />
                      </bottom>
                   </BorderPane>
                </content>
@@ -447,7 +460,7 @@
                <content>
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <bottom>
-                        <TextArea prefHeight="102.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
+                        <TextArea fx:id="textArea" prefHeight="102.0" prefWidth="1068.0" promptText="Güne notunuzu girin" BorderPane.alignment="CENTER" />
                      </bottom>
                      <center>
                         <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -502,9 +515,9 @@
                                     </TableColumn>
                                     <TableColumn fx:id="treatColumn" editable="false" prefWidth="359.8487854003906" text="İkramlar">
                                        <columns>
-                                          <TableColumn fx:id="eventColumn111" editable="false" prefWidth="65.29507446289062" text="70 cl" />
-                                          <TableColumn fx:id="eventColumn121" editable="false" prefWidth="62.2528076171875" text="35 cl" />
-                                          <TableColumn fx:id="eventColumn131" editable="false" prefWidth="68.88525390625" text="Konfeti" />
+                                          <TableColumn fx:id="eventColumn1112" editable="false" prefWidth="65.29507446289062" text="70 cl" />
+                                          <TableColumn fx:id="eventColumn1212" editable="false" prefWidth="62.2528076171875" text="35 cl" />
+                                          <TableColumn fx:id="eventColumn1312" editable="false" prefWidth="68.88525390625" text="Konfeti" />
                                        </columns>
                                        <graphic>
                                           <RadioButton fx:id="treatSmaller" mnemonicParsing="false" />
@@ -543,7 +556,7 @@
         <menus>
           <Menu mnemonicParsing="false" text="Dosya">
             <items>
-                  <MenuItem mnemonicParsing="false" text="Yorumlar" />
+                  <MenuItem fx:id="commentsMenItem" mnemonicParsing="false" text="Yorumlar" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Ekle">
@@ -551,11 +564,25 @@
               <MenuItem fx:id="addnightexcel" mnemonicParsing="false" text="Excel Dosyası Ekle" />
             </items>
           </Menu>
-          <Menu mnemonicParsing="false" text="Yardım">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
+            <Menu fx:id="idabout" mnemonicParsing="false" text="Yardım">
+               <items>
+                  <MenuItem fx:id="information" mnemonicParsing="false" text="Bilgilendirme">
+                     <graphic>
+                        <Pane focusTraversable="true" prefWidth="400.0">
+                           <children>
+                              <Label focusTraversable="false" layoutX="5.0" layoutY="10.0" text="Bu program Uluç Furkan Vardar" wrapText="true" />
+                              <Label focusTraversable="false" layoutX="5.0" layoutY="30.0" text="tarafından yazılmıştır." />
+                              <Label focusTraversable="false" layoutX="5.0" layoutY="50.0" text="Eğer bir problem olursa beni bilgilendirin." />
+                              <Hyperlink fx:id="idHyper" layoutX="5.0" layoutY="70.0" text="vardaru@mef.edu.tr" />
+                           </children>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Pane>
+                     </graphic>
+                  </MenuItem>
+               </items>
+            </Menu>
         </menus>
       </MenuBar>
    </top>

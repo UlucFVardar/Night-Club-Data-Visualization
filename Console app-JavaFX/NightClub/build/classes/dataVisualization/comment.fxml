@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dataVisualization.CommentController">
+   <children>
+      <TreeView fx:id="treeView" layoutY="40.0" maxWidth="170.0" prefHeight="350.0" prefWidth="170.0" showRoot="false" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="40.0" />
+      <TextArea fx:id="textArea" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="60.0" />
+      <Label fx:id="label" textAlignment="CENTER" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="15.0" />
+      <RadioButton fx:id="reSize" layoutX="80.0" layoutY="15.0" mnemonicParsing="false" text="Tekrar boyutlandırma" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+   </children>
+</AnchorPane>

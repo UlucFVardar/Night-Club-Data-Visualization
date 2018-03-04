@@ -39,6 +39,7 @@ public class EventNight {
     private String eventType;
     private double alcoholConsumption;
     private double endex;
+    private String comment;
     @Override
     public String toString() {
         if(this.artist!=null)
@@ -80,6 +81,15 @@ public class EventNight {
         endorsement=0;
         profit=0;    
         this.eventType="Normal Gün";
+        comment="";
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public static String[] getNamesOfSaledElements() {

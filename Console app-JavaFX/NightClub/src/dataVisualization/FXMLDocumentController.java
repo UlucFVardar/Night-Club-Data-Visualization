@@ -11,7 +11,6 @@ import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,11 +23,11 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.NumberAxis;
@@ -43,15 +42,17 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.cell.MapValueFactory;
-import javafx.scene.input.ContextMenuEvent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -67,270 +68,424 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
  */
 public class FXMLDocumentController implements Initializable {
 
-    @FXML // fx:id="endexSmaller"
-    private RadioButton endexSmaller; // Value injected by FXMLLoader
-
-    @FXML // fx:id="anomaliesStack"
-    private StackedBarChart<?, ?> anomaliesStack; // Value injected by FXMLLoader
-
-    @FXML // fx:id="allNightTableView"
-    private TableView allNightTableView; // Value injected by FXMLLoader
-
-    @FXML // fx:id="artistCostColumn"
-    private TableColumn<?, ?> artistCostColumn; // Value injected by FXMLLoader
+    @FXML
+    private RadioButton moneyMovementSmaller1;
 
     @FXML
-    private Label informationLabelDay;
+    private TableView allNightTableView;
 
     @FXML
-    private Label informationLabelType;
+    private Button evaluationByDayBtn;
+
+    @FXML
+    private Tab tab3;
+
+    @FXML
+    private Tab tab4;
+
+    @FXML
+    private RadioButton discountSmaller1;
+
+    @FXML
+    private Tab tab1;
+
+    @FXML
+    private Tab tab2;
+
+    @FXML
+    private RadioButton treatSmaller;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn161;
+
+    @FXML
+    private TextField GEMin;
+
+    @FXML
+    private TableColumn<?, ?> giroEColumn1;
+
+    @FXML
+    private TableColumn<?, ?> artistCostColumn1;
+
+    @FXML
+    private TableColumn<?, ?> moneyMoventColumn;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn1;
+
+    @FXML
+    private TableColumn<?, ?> discountColumn1;
 
     @FXML
     private Label informationLabelName;
 
     @FXML
+    private TableView allNightTableView1;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn1211;
+
+    @FXML
+    private TableColumn<?, ?> totalCostColumn;
+
+    @FXML
+    private PieChart DailyProfitDistiribution;
+
+    @FXML
+    private DatePicker distributionByArtistsEnd;
+
+    @FXML
+    private TableColumn<?, ?> endexColumn;
+
+    @FXML
+    private MenuItem lastDegree;
+
+    @FXML
+    private TableColumn<?, ?> tipColumn1;
+
+    @FXML
+    private Button showDeeply3;
+
+    @FXML
+    private Button showDeeply2;
+
+    @FXML
+    private Button showDeeply1;
+
+    @FXML
+    private TableColumn<?, ?> treatColumn1;
+
+    @FXML
+    private TextField GEMax;
+
+    @FXML
+    private TableColumn<?, ?> sumOfDiscountColumn1;
+
+    @FXML
+    private TableColumn<?, ?> profitColumn;
+
+    @FXML
+    private BorderPane borderpane;
+
+    @FXML
+    private SplitMenuButton distributionByArtistsSplitMenu;
+
+    @FXML
+    private DatePicker datePiccerForDaylyProfit;
+
+    @FXML
+    private TextField AMin;
+
+    @FXML
+    private TableColumn<?, ?> bottleColumn;
+
+    @FXML
+    private TableColumn<?, ?> bottleColumn1;
+
+    @FXML
+    private MenuItem commentsMenItem;
+
+    @FXML
+    private CheckBox distributionByArtistsCheckProfit;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn;
+
+    @FXML
+    private DatePicker distributionByArtistsStart;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn1111;
+
+    @FXML
+    private TableColumn<?, ?> dontPayColumn;
+
+    @FXML
+    private MenuItem firstDegree;
+
+    @FXML
+    private TableColumn<?, ?> tipColumn;
+
+    @FXML
+    private Button distiributionByName;
+
+    @FXML
+    private StackedBarChart<?, ?> evalutionByDayStackChart;
+
+    @FXML
+    private RadioButton moneyMovementSmaller;
+
+    @FXML
+    private StackedBarChart<?, ?> distirubitonByNameStackChart;
+
+    @FXML
+    private TableColumn<?, ?> drunkColumn1;
+
+    @FXML
+    private TableColumn<?, ?> groupEntryColumn;
+
+    @FXML
+    private AnchorPane asd;
+
+    @FXML
+    private TabPane gunlukCiroTabPane;
+
+    @FXML
+    private Label informationLabelType;
+
+    @FXML
+    private DatePicker distiributionByNameStart;
+
+    @FXML
+    private TextField AMax;
+
+    @FXML
+    private TableColumn<?, ?> profitColumn1;
+
+    @FXML
+    private TextArea textArea;
+    @FXML
+    private TextArea textArea1;
+
+    @FXML
+    private TableColumn<?, ?> endexColumn1;
+
+    @FXML
+    private RadioButton endexSmaller;
+
+    @FXML
+    private StackedBarChart<?, ?> anomaliesStack;
+
+    @FXML
+    private TableColumn<?, ?> artistCostColumn;
+
+    @FXML
+    private TableColumn<?, ?> discountColumn;
+
+    @FXML
+    private TableColumn<?, ?> salesColumn1;
+
+    @FXML
+    private DatePicker evaluationByDayEnd;
+
+    @FXML
+    private LineChart<?, ?> lineChartByArtist;
+
+    @FXML
+    private TableColumn<?, ?> moneyMoventColumn1;
+
+    @FXML
+    private TableColumn<?, ?> giroEColumn;
+
+    @FXML
+    private TableColumn<?, ?> treatColumn;
+
+    @FXML
+    private TableColumn<?, ?> giroColumn;
+
+    @FXML
+    private RadioButton salesSmaller;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn111;
+
+    @FXML
+    private CheckBox evaluationByDayGiroCheck;
+
+    @FXML
+    private MenuItem thirdDegree;
+
+    @FXML
+    private Label dailyProfitValue;
+
+    @FXML
+    private Label DailyTurnoverDistributionLabel;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn11;
+
+    @FXML
+    private TableColumn<?, ?> groupEntryColumn1;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn12;
+
+    @FXML
+    private Accordion accordion;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn13;
+
+    @FXML
+    private Button distributionByArtists;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn14;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn15;
+
+    @FXML
+    private Label giroLabel;
+
+    @FXML
+    private CategoryAxis evelation;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn16;
+
+    @FXML
+    private Label eventLabel1;
+
+    @FXML
+    private TextField GMin;
+
+    @FXML
+    private TableColumn<?, ?> sumOfDiscountColumn;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn121;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn131;
+
+    @FXML
+    private Label informationLabelDay;
+
+    @FXML
     private Label informationLabelAnomolies;
 
     @FXML
-    private Button showDeeply, showDeeply1, showDeeply2, showDeeply3;
+    private StackedBarChart<?, ?> distributionByArtistsStackChart;
 
-    @FXML // fx:id="discountColumn"
-    private TableColumn<?, ?> discountColumn; // Value injected by FXMLLoader
+    @FXML
+    private TableColumn<?, ?> totalCostColumn1;
 
-    @FXML // fx:id="evaluationByDayBtn"
-    private Button evaluationByDayBtn; // Value injected by FXMLLoader
+    @FXML
+    private RadioButton endexSmaller1;
 
-    @FXML // fx:id="evaluationByDayEnd"
-    private DatePicker evaluationByDayEnd; // Value injected by FXMLLoader
+    @FXML
+    private PieChart DailyTurnoverDistribution;
 
-    @FXML // fx:id="lineChartByArtist"
-    private LineChart<?, ?> lineChartByArtist; // Value injected by FXMLLoader
+    @FXML
+    private TableColumn<?, ?> dateColumn;
 
-    @FXML // fx:id="giroEColumn"
-    private TableColumn<?, ?> giroEColumn; // Value injected by FXMLLoader
+    @FXML
+    private TextField GMax;
 
-    @FXML // fx:id="treatColumn"
-    private TableColumn<?, ?> treatColumn; // Value injected by FXMLLoader
+    @FXML
+    private Button searchButton;
 
-    @FXML // fx:id="giroColumn"
-    private TableColumn<?, ?> giroColumn; // Value injected by FXMLLoader
+    @FXML
+    private DatePicker evaluationByDayStart;
 
-    @FXML // fx:id="salesSmaller"
-    private RadioButton salesSmaller; // Value injected by FXMLLoader
+    @FXML
+    private TextField PMin;
 
-    @FXML // fx:id="eventColumn111"
-    private TableColumn<?, ?> eventColumn111; // Value injected by FXMLLoader
+    @FXML
+    private TableColumn<?, ?> dontPayColumn1;
 
-    @FXML // fx:id="treatSmaller"
-    private RadioButton treatSmaller; // Value injected by FXMLLoader
+    @FXML
+    private RadioButton treatSmaller1;
 
-    @FXML // fx:id="evaluationByDayGiroCheck"
-    private CheckBox evaluationByDayGiroCheck; // Value injected by FXMLLoader
-
-    @FXML // fx:id="thirdDegree"
-    private MenuItem thirdDegree; // Value injected by FXMLLoader
-
-    @FXML // fx:id="dailyProfitValue"
-    private Label dailyProfitValue; // Value injected by FXMLLoader
-
-    @FXML // fx:id="DailyTurnoverDistributionLabel"
-    private Label DailyTurnoverDistributionLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="moneyMoventColumn"
-    private TableColumn<?, ?> moneyMoventColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn11"
-    private TableColumn<?, ?> eventColumn11; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn12"
-    private TableColumn<?, ?> eventColumn12; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn13"
-    private TableColumn<?, ?> eventColumn13; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtists"
-    private Button distributionByArtists; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn14"
-    private TableColumn<?, ?> eventColumn14; // Value injected by FXMLLoader
-
-    @FXML // fx:id="totalCostColumn"
-    private TableColumn<?, ?> totalCostColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn15"
-    private TableColumn<?, ?> eventColumn15; // Value injected by FXMLLoader
-
-    @FXML // fx:id="giroLabel"
-    private Label giroLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="evelation"
-    private CategoryAxis evelation; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn16"
-    private TableColumn<?, ?> eventColumn16; // Value injected by FXMLLoader
-
-    @FXML // fx:id="DailyProfitDistiribution"
-    private PieChart DailyProfitDistiribution; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsEnd"
-    private DatePicker distributionByArtistsEnd; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventLabel1"
-    private Label eventLabel1; // Value injected by FXMLLoader
-
-    @FXML // fx:id="sumOfDiscountColumn"
-    private TableColumn<?, ?> sumOfDiscountColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="endexColumn"
-    private TableColumn<?, ?> endexColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn121"
-    private TableColumn<?, ?> eventColumn121; // Value injected by FXMLLoader
-
-    @FXML // fx:id="lastDegree"
-    private MenuItem lastDegree; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn131"
-    private TableColumn<?, ?> eventColumn131; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsStackChart"
-    private StackedBarChart<?, ?> distributionByArtistsStackChart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="DailyTurnoverDistribution"
-    private PieChart DailyTurnoverDistribution; // Value injected by FXMLLoader
-
-    @FXML // fx:id="dateColumn"
-    private TableColumn<?, ?> dateColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="profitColumn"
-    private TableColumn<?, ?> profitColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="borderpane"
-    private BorderPane borderpane; // Value injected by FXMLLoader
-
-    @FXML // fx:id="evaluationByDayStart"
-    private DatePicker evaluationByDayStart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsSplitMenu"
-    private SplitMenuButton distributionByArtistsSplitMenu; // Value injected by FXMLLoader
-
-    @FXML // fx:id="evaluationByDayProfitCheck"
-    private CheckBox evaluationByDayProfitCheck; // Value injected by FXMLLoader
-
-    @FXML // fx:id="datePiccerForDaylyProfit"
-    private DatePicker datePiccerForDaylyProfit; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByNameCheckGiro"
-    private CheckBox distiributionByNameCheckGiro; // Value injected by FXMLLoader
-
-    @FXML // fx:id="bottleColumn"
-    private TableColumn<?, ?> bottleColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsCheckGiro"
-    private CheckBox distributionByArtistsCheckGiro; // Value injected by FXMLLoader
-
-    @FXML // fx:id="salesColumn"
-    private TableColumn<?, ?> salesColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByNameCheckProfit"
-    private CheckBox distiributionByNameCheckProfit; // Value injected by FXMLLoader
-
-    @FXML // fx:id="addnightexcel"
-    private MenuItem addnightexcel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="datePiccerLabelForDaylyCiro"
-    private Label datePiccerLabelForDaylyCiro; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsCheckProfit"
-    private CheckBox distributionByArtistsCheckProfit; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventColumn"
-    private TableColumn<?, ?> eventColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="datePiccerLabelForDaylyProfit"
-    private Label datePiccerLabelForDaylyProfit; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distributionByArtistsStart"
-    private DatePicker distributionByArtistsStart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="datePiccerForDaylyCiro"
-    private DatePicker datePiccerForDaylyCiro; // Value injected by FXMLLoader
-
-    @FXML // fx:id="anomaliesLine"
-    private LineChart<?, ?> anomaliesLine; // Value injected by FXMLLoader
-
-    @FXML // fx:id="dontPayColumn"
-    private TableColumn<?, ?> dontPayColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="discountSmaller"
-    private RadioButton discountSmaller; // Value injected by FXMLLoader
-
-    @FXML // fx:id="firstDegree"
-    private MenuItem firstDegree; // Value injected by FXMLLoader
-
-    @FXML // fx:id="tipColumn"
-    private TableColumn<?, ?> tipColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="drunkColumn"
-    private TableColumn<?, ?> drunkColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByName"
-    private Button distiributionByName; // Value injected by FXMLLoader
-
-    @FXML // fx:id="evalutionByDayStackChart"
-    private StackedBarChart<?, ?> evalutionByDayStackChart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="eventLabel"
-    private Label eventLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="DailyCheckLine"
-    private LineChart<?, ?> DailyCheckLine; // Value injected by FXMLLoader
-
-    @FXML // fx:id="moneyMovementSmaller"
-    private RadioButton moneyMovementSmaller; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distirubitonByNameStackChart"
-    private StackedBarChart<?, ?> distirubitonByNameStackChart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByNameSplitMenu"
-    private SplitMenuButton distiributionByNameSplitMenu; // Value injected by FXMLLoader
-
-    @FXML // fx:id="groupEntryColumn"
-    private TableColumn<?, ?> groupEntryColumn; // Value injected by FXMLLoader
-
-    @FXML // fx:id="asd"
-    private AnchorPane asd; // Value injected by FXMLLoader
-
-    @FXML // fx:id="profitLabel"
-    private Label profitLabel; // Value injected by FXMLLoader
-
-    @FXML // fx:id="secondDegree"
-    private MenuItem secondDegree; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByNameEnd"
-    private DatePicker distiributionByNameEnd; // Value injected by FXMLLoader
-
-    @FXML // fx:id="gunlukCiroTabPane"
-    private TabPane gunlukCiroTabPane; // Value injected by FXMLLoader
-
-    @FXML // fx:id="distiributionByNameStart"
-    private DatePicker distiributionByNameStart; // Value injected by FXMLLoader
-
-    @FXML // fx:id="lineChartByName"
-    private LineChart<?, ?> lineChartByName; // Value injected by FXMLLoader
+    @FXML
+    private CheckBox evaluationByDayProfitCheck;
 
     @FXML
     private TitledPane allNight;
 
     @FXML
-    private Accordion accordion;
+    private CheckBox distiributionByNameCheckGiro;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn141;
+
+    @FXML
+    private CheckBox distributionByArtistsCheckGiro;
+
+    @FXML
+    private TextField PMax;
+
+    @FXML
+    private TableColumn<?, ?> salesColumn;
+
+    @FXML
+    private CheckBox distiributionByNameCheckProfit;
+
+    @FXML
+    private MenuItem addnightexcel;
+
+    @FXML
+    private Label datePiccerLabelForDaylyCiro;
+
+    @FXML
+    private TableColumn<?, ?> dateColumn1;
+
+    @FXML
+    private Label datePiccerLabelForDaylyProfit;
+
+    @FXML
+    private DatePicker datePiccerForDaylyCiro;
+
+    @FXML
+    private LineChart<?, ?> anomaliesLine;
+
+    @FXML
+    private RadioButton discountSmaller;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn1311;
+
+    @FXML
+    private TableColumn<?, ?> drunkColumn;
+
+    @FXML
+    private Label eventLabel;
+
+    @FXML
+    private LineChart<?, ?> DailyCheckLine;
+
+    @FXML
+    private Button showDeeply;
+
+    @FXML
+    private SplitMenuButton searchTypeSplit;
+
+    @FXML
+    private TableColumn<?, ?> giroColumn1;
+
+    @FXML
+    private SplitMenuButton distiributionByNameSplitMenu;
+
+    @FXML
+    private Label profitLabel;
+
+    @FXML
+    private TableColumn<?, ?> eventColumn151;
+
+    @FXML
+    private MenuItem secondDegree;
+
+    @FXML
+    private DatePicker distiributionByNameEnd;
+
+    @FXML
+    private RadioButton salesSmaller1;
+
+    @FXML
+    private LineChart<?, ?> lineChartByName;
+
     @FXML
     private TabPane tabPane;
 
+    public static Stage stage;
     public boolean oneItemSelected = false;
-    public String clickedDate = "";
-    protected ArrayList<Artist> allArtists = null;
-    protected ArrayList<EventNight> allNights = null;
+    public String clickedDate = ""; //for intent forum grafic to info page
+    public String choosenDate = ""; //for comment all info page
+    public String choosenDate1 = ""; //for comment in search page
+    public static ArrayList<Artist> allArtists = null;
+    public HashMap<String, EventNight> allN = null;
+    public static ArrayList<EventNight> allNights = null;
     protected HashMap<String, Double> unitCosts = null;
     protected HashMap<String, Double> unitSalesPrice = null;
     protected String[] columnMapKeys = {"Tarih", "Event Tipi", "comingPeople", "Ciro", "Kar", "Tip", "Ödenmez", "Grup Girişi",
@@ -340,17 +495,262 @@ public class FXMLDocumentController implements Initializable {
 
     public FXMLDocumentController() {
 
-        this.deneme = new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.out.println("sadasda");
-            }
-        };
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        // Create a new MultiRange with min/max values
+        ObservableList columns = allNightTableView1.getColumns();
+        int size = columns.size();
+        int k = 0;
+        for (int i = 0; i < size; i++) {
+            TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+
+            if (c.getColumns().size() != 0) {
+                int size2 = c.getColumns().size();
+                ObservableList<TableColumn<String, ?>> columns1 = c.getColumns();
+                for (int j = 0; j < size2; j++) {
+                    columns1.get(j).setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
+                    k++;
+                }
+            } else {
+                c.setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
+                k++;
+            }
+        }
+        columns = allNightTableView.getColumns();
+                     size = columns.size();
+                     k = 0;
+                    for (int i = 0; i < size; i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        if (c.getColumns().size() != 0) {
+                            int size2 = c.getColumns().size();
+                            ObservableList<TableColumn<String, ?>> columns1 = c.getColumns();
+                            for (int j = 0; j < size2; j++) {
+                                columns1.get(j).setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
+                                k++;
+                            }
+                        } else {
+                            c.setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
+                            k++;
+                        }
+                    }
+        GMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = GMax.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            GMax.setText(GMax.getText().substring(0, GMax.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        GMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = GMin.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            GMin.setText(GMin.getText().substring(0, GMin.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        PMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = PMax.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            PMax.setText(PMax.getText().substring(0, PMax.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        PMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = PMin.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        if (!(ch == '.' || ch == '-')) {
+                            PMin.setText(PMin.getText().substring(0, PMin.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        AMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = AMax.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            AMax.setText(AMax.getText().substring(0, AMax.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        AMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = AMin.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        if (!(ch == '.' || ch == '-')) {
+                            AMin.setText(AMin.getText().substring(0, AMin.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        GEMax.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = GEMax.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            GEMax.setText(GEMax.getText().substring(0, GEMax.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+        GEMin.lengthProperty().addListener(new ChangeListener<Number>() {
+            @Override
+            public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+                if (newValue.intValue() > oldValue.intValue()) {
+                    char ch = GEMin.getText().charAt(oldValue.intValue());
+                    // Check if the new character is the number or other's
+                    if (!(ch >= '0' && ch <= '9')) {
+                        // if it's not number then just setText to previous one
+                        if (!(ch == '.' || ch == '-')) {
+                            GEMin.setText(GEMin.getText().substring(0, GEMin.getText().length() - 1));
+                        }
+                    }
+                }
+            }
+        });
+
+        for (int i = 0; i < searchTypeSplit.getItems().size(); i++) {
+            searchTypeSplit.getItems().get(i).setOnAction(myHandler2);
+        }
+        searchButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (allNights != null && allNights.size() > 0) {
+                    ArrayList<EventNight> filteredNights = new ArrayList<>();
+                    double gMax = 999999, gMin = -999999, pMax = 999999, pMin = -999999, geMax = 999, geMin = -999, aMax = 999, aMin = -999;
+                    if (!GMax.getText().equals("")) {
+                        gMax = Double.parseDouble(GMax.getText());
+                    }
+                    if (!GMin.getText().equals("")) {
+                        gMin = Double.parseDouble(GMin.getText());
+                    }
+                    if (!PMax.getText().equals("")) {
+                        pMax = Double.parseDouble(PMax.getText());
+                    }
+                    if (!AMax.getText().equals("")) {
+                        aMax = Double.parseDouble(AMax.getText());
+                    }
+                    if (!AMin.getText().equals("")) {
+                        aMin = Double.parseDouble(AMin.getText());
+                    }
+                    if (!GEMax.getText().equals("")) {
+                        geMax = Double.parseDouble(GEMax.getText());
+                    }
+                    if (!PMin.getText().equals("")) {
+                        pMin = Double.parseDouble(PMin.getText());
+                    }
+                    if (!GEMin.getText().equals("")) {
+                        pMin = Double.parseDouble(GEMin.getText());
+                    }
+
+                    if (!searchTypeSplit.getText().equals("Sınırlama Yok")) {
+                        for (int i = 0; i < allNights.size(); i++) {
+                            EventNight e = allNights.get(i);
+                            if (e.getEventType().equals(searchTypeSplit.getText())
+                                    && (e.getProfit() >= pMin && e.getProfit() <= pMax)
+                                    && (e.getEndorsement() >= gMin && e.getEndorsement() <= gMax)
+                                    && (e.getAlcoholConsumption() >= aMin && e.getAlcoholConsumption() <= aMax)
+                                    && (e.getEndex() >= geMin && e.getEndex() <= geMax)) {
+                                filteredNights.add(allNights.get(i));
+                            }
+                        }
+                    } else {
+                        for (int i = 0; i < allNights.size(); i++) {
+                            EventNight e = allNights.get(i);
+                            if ((e.getProfit() >= pMin && e.getProfit() <= pMax)
+                                    && (e.getEndorsement() >= gMin && e.getEndorsement() <= gMax)
+                                    && (e.getAlcoholConsumption() >= aMin && e.getAlcoholConsumption() <= aMax)
+                                    && (e.getEndex() >= geMin && e.getEndex() <= geMax)) {
+                                filteredNights.add(e);
+                            }
+                        }
+
+                    }
+
+                    allNightTableView.setEditable(false);
+                    allNightTableView.getSelectionModel().setCellSelectionEnabled(false);
+                    allNightTableView1.setItems(generateDataInMap(filteredNights));
+                    allNightTableView1.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+                        if (newSelection != null) {
+                            int s = newSelection.toString().lastIndexOf("Tarih=");
+                            String date = newSelection.toString().substring(s + 6, s + 16);
+                            choosenDate1 = date;
+                            textArea1.setText(allN.get(date).getComment());
+                        }
+                    });
+                    textArea1.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                        @Override
+                        public void handle(KeyEvent keyEvent) {
+                            if (keyEvent.getCode() == KeyCode.ENTER) {
+                                allN.get(choosenDate1).setComment(textArea1.getText());
+                            }
+                        }
+                    });
+                }
+            }
+        });
+        commentsMenItem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    FXMLLoader fxmlLoader = new FXMLLoader();
+                    fxmlLoader.setLocation(getClass().getResource("comment.fxml"));
+                    Scene scene = new Scene(fxmlLoader.load(), 400, 400);
+                    stage = new Stage();
+                    stage.setTitle("Yorumlar");
+                    stage.setScene(scene);
+                    stage.show();
+                    stage.setAlwaysOnTop(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
         showDeeply.setOnAction(intent);
         showDeeply1.setOnAction(intent);
         showDeeply2.setOnAction(intent);
@@ -365,8 +765,7 @@ public class FXMLDocumentController implements Initializable {
                 showDeeply3.setDisable(!oneItemSelected);
 
             }
-        }
-        );
+        });
         datePiccerForDaylyCiro.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -419,42 +818,46 @@ public class FXMLDocumentController implements Initializable {
                     return;
                 }
                 try {
+                    if (allN == null) {
+                        allN = new HashMap<String, EventNight>();
+                    }
+
                     myExcelFile Data = new myExcelFile(file.getAbsolutePath());
                     unitCosts = readUnitCostFromExcel(Data);
                     unitSalesPrice = readUnitSalesPriceFromExcel(Data);
-                    allNights = creatAllNightsFromExcel(Data, unitCosts, unitSalesPrice);
-                    /*
-                        for (int i = 0; i < allNights.size(); i++) 
-                            System.out.println(allNights.get(i));                   
-                     */
-                    for (int i = 0; i < allArtists.size(); i++) {
-                        MenuItem item = new MenuItem(allArtists.get(i).getArtistName());
-                        item.setOnAction(myHandler);
-                        distiributionByNameSplitMenu.getItems().add(item);
+                    allNights = creatAllNightsFromExcel(Data, unitCosts, unitSalesPrice, allN);
+                    SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+                    for (int i = 0; i < allNights.size(); i++) {
+                        allN.put(ft.format(allNights.get(i).getDate()), allNights.get(i));
                     }
-                    ObservableList columns = allNightTableView.getColumns();
-                    int size = columns.size();
-                    int k = 0;
-                    for (int i = 0; i < size; i++) {
-                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
-                        //System.out.println("adı>>>"+c.getText()+", kontorl>>"+ (c.getColumns().size()!=0) );
-                        if (c.getColumns().size() != 0) {
-                            int size2 = c.getColumns().size();
-                            ObservableList<TableColumn<String, ?>> columns1 = c.getColumns();
-                            for (int j = 0; j < size2; j++) {
-                                columns1.get(j).setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
-                                k++;
-                            }
-                        } else {
-                            c.setCellValueFactory(new MapValueFactory(columnMapKeys[k]));
-                            k++;
+                    if (allArtists.size() != distiributionByNameSplitMenu.getItems().size()) {
+                        for (int i = 0; i < allArtists.size(); i++) {
+                            MenuItem item = new MenuItem(allArtists.get(i).getArtistName());
+                            item.setOnAction(myHandler);
+                            distiributionByNameSplitMenu.getItems().add(item);
                         }
                     }
+                    
                     allNightTableView.setEditable(false);
                     allNightTableView.getSelectionModel().setCellSelectionEnabled(false);
-                    allNightTableView.setItems(generateDataInMap());
+                    allNightTableView.setItems(generateDataInMap(allNights));
+                    allNightTableView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) -> {
+                        if (newSelection != null) {
+                            int s = newSelection.toString().lastIndexOf("Tarih=");
+                            String date = newSelection.toString().substring(s + 6, s + 16);
+                            choosenDate = date;
+                            textArea.setText(allN.get(date).getComment());
+                        }
+                    });
+                    textArea.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                        @Override
+                        public void handle(KeyEvent keyEvent) {
+                            if (keyEvent.getCode() == KeyCode.ENTER) {
+                                allN.get(choosenDate).setComment(textArea.getText());
+                            }
+                        }
+                    });
                     findAndDrawAnomalies(allNights, anomaliesStack, anomaliesLine);
-
                 } catch (IOException ex) {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvalidFormatException ex) {
@@ -501,6 +904,7 @@ public class FXMLDocumentController implements Initializable {
                     });
                 }
             }
+
         });
         evaluationByDayGiroCheck.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -541,12 +945,40 @@ public class FXMLDocumentController implements Initializable {
                         }
                     }
                     names = EventNight.getNamesOfSaledElements();
-                    drawLineChart(DailyCheckLine, dates, EventNight.getNamesOfEndex(), endex);
+
+                    if (evaluationByDayGiroCheck.isSelected()) {
+                        drawLineChart(DailyCheckLine, dates, EventNight.getNamesOfEndex(), endex);
+
+                        drawStackChartBetweenDateswithInputs(evalutionByDayStackChart, dates, names, giro, null, informationLabelDay);
+                    } else if (evaluationByDayProfitCheck.isSelected()) {
+                        drawLineChart(DailyCheckLine, dates, EventNight.getNamesOfEndex(), endex);
+
+                        drawStackChartBetweenDateswithInputs(evalutionByDayStackChart, dates, names, null, sumOfProfit, informationLabelDay);
+                    }
+                } else if (allNights != null) {
+                    String names[] = EventNight.getNamesOfSaledElements();
+                    ArrayList<double[]> giro = new ArrayList<>();
+                    ArrayList<Date> dates = new ArrayList<>();
+                    ArrayList<double[]> profit = new ArrayList<>();
+                    ArrayList<Double> sumOfProfit = new ArrayList<>();
+                    ArrayList<Pair<Double, Double>> endex = new ArrayList<>();
+
+                    for (int j = 0; j < allNights.size(); j++) {
+                        giro.add(allNights.get(j).getGainOfSales());
+                        dates.add(allNights.get(j).getDate());
+                        profit.add(allNights.get(j).getProfitOfSales());
+                        sumOfProfit.add(allNights.get(j).getProfit());
+                        endex.add(new Pair<Double, Double>(allNights.get(j).getAlcoholConsumption(), allNights.get(j).getEndex()));
+                    }
+                    names = EventNight.getNamesOfSaledElements();
 
                     if (evaluationByDayGiroCheck.isSelected()) {
                         drawStackChartBetweenDateswithInputs(evalutionByDayStackChart, dates, names, giro, null, informationLabelDay);
+                        drawLineChart(DailyCheckLine, dates, EventNight.getNamesOfEndex(), endex);
                     } else if (evaluationByDayProfitCheck.isSelected()) {
-                        drawStackChartBetweenDateswithInputs(evalutionByDayStackChart, dates, names, profit, sumOfProfit, informationLabelDay);
+                        drawStackChartBetweenDateswithInputs(evalutionByDayStackChart, dates, names, null, sumOfProfit, informationLabelDay);
+                        drawLineChart(DailyCheckLine, dates, EventNight.getNamesOfEndex(), endex);
+
                     }
                 }
             }
@@ -578,13 +1010,42 @@ public class FXMLDocumentController implements Initializable {
                             }
                         }
                     }
-                    drawLineChart(lineChartByArtist, dates, EventNight.getNamesOfEndex(), endex);
 
                     names = EventNight.getNamesOfSaledElements();
                     if (distributionByArtistsCheckGiro.isSelected()) {
+                        drawLineChart(lineChartByArtist, dates, EventNight.getNamesOfEndex(), endex);
                         drawStackChartBetweenDateswithInputs(distributionByArtistsStackChart, dates, names, giro, null, informationLabelType);
                     } else if (distributionByArtistsCheckProfit.isSelected()) {
-                        drawStackChartBetweenDateswithInputs(distributionByArtistsStackChart, dates, names, profit, sumOfProfit, informationLabelType);
+                        drawStackChartBetweenDateswithInputs(distributionByArtistsStackChart, dates, names, null, sumOfProfit, informationLabelType);
+                        drawLineChart(lineChartByArtist, dates, EventNight.getNamesOfEndex(), endex);
+
+                    }
+                } else if (allNights != null) {
+                    String names[] = EventNight.getNamesOfSaledElements();
+                    ArrayList<double[]> giro = new ArrayList<>();
+                    ArrayList<Date> dates = new ArrayList<>();
+                    ArrayList<double[]> profit = new ArrayList<>();
+                    ArrayList<Double> sumOfProfit = new ArrayList<>();
+                    ArrayList<Pair<Double, Double>> endex = new ArrayList<>();
+
+                    //if user select longer then one year there will be a problem
+                    for (int j = 0; j < allNights.size(); j++) {
+                        if (allNights.get(j).getEventType().toString().equals(distributionByArtistsSplitMenu.getText().toString().trim())) {
+                            giro.add(allNights.get(j).getGainOfSales());
+                            dates.add(allNights.get(j).getDate());
+                            profit.add(allNights.get(j).getProfitOfSales());
+                            sumOfProfit.add(allNights.get(j).getProfit());
+                            endex.add(new Pair<Double, Double>(allNights.get(j).getAlcoholConsumption(), allNights.get(j).getEndex()));
+                        }
+                    }
+
+                    names = EventNight.getNamesOfSaledElements();
+                    if (distributionByArtistsCheckGiro.isSelected()) {
+                        drawLineChart(lineChartByArtist, dates, EventNight.getNamesOfEndex(), endex);
+                        drawStackChartBetweenDateswithInputs(distributionByArtistsStackChart, dates, names, giro, null, informationLabelType);
+                    } else if (distributionByArtistsCheckProfit.isSelected()) {
+                        drawLineChart(lineChartByArtist, dates, EventNight.getNamesOfEndex(), endex);
+                        drawStackChartBetweenDateswithInputs(distributionByArtistsStackChart, dates, names, null, sumOfProfit, informationLabelType);
                     }
                 }
             }
@@ -640,7 +1101,7 @@ public class FXMLDocumentController implements Initializable {
         distiributionByName.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                if (allArtists != null && distiributionByNameEnd != null && distiributionByNameStart != null) {
+                if (allArtists != null && distiributionByNameEnd.getValue() != null && distiributionByNameStart.getValue() != null) {
                     String names[] = EventNight.getNamesOfSaledElements();
                     ArrayList<double[]> giro = new ArrayList<>();
                     ArrayList<Date> dates = new ArrayList<>();
@@ -661,19 +1122,68 @@ public class FXMLDocumentController implements Initializable {
                                         profit.add(allArtists.get(i).getNights().get(aDay).getProfitOfSales());
                                         sumOfProfit.add(allArtists.get(i).getNights().get(aDay).getProfit());
                                         endex.add(new Pair<Double, Double>(allArtists.get(i).getNights().get(aDay).getAlcoholConsumption(), allArtists.get(i).getNights().get(aDay).getEndex()));
-
                                         continue;
                                     }
                                 }
                             }
                         }
                     }
-                    drawLineChart(lineChartByName, dates, EventNight.getNamesOfEndex(), endex);
                     names = EventNight.getNamesOfSaledElements();
                     if (distiributionByNameCheckGiro.isSelected()) {
+
+                        drawLineChart(lineChartByName, dates, EventNight.getNamesOfEndex(), endex);
+
                         drawStackChartBetweenDateswithInputs(distirubitonByNameStackChart, dates, names, giro, null, informationLabelName);
                     } else if (distiributionByNameCheckProfit.isSelected()) {
-                        drawStackChartBetweenDateswithInputs(distirubitonByNameStackChart, dates, names, profit, sumOfProfit, informationLabelName);
+                        drawLineChart(lineChartByName, dates, EventNight.getNamesOfEndex(), endex);
+
+                        drawStackChartBetweenDateswithInputs(distirubitonByNameStackChart, dates, names, null, sumOfProfit, informationLabelName);
+                    }
+                } else if (allArtists != null) {
+                    String names[] = EventNight.getNamesOfSaledElements();
+                    ArrayList<double[]> giro = new ArrayList<>();
+                    ArrayList<Date> dates = new ArrayList<>();
+                    ArrayList<double[]> profit = new ArrayList<>();
+                    ArrayList<Double> sumOfProfit = new ArrayList<>();
+                    ArrayList<Pair<Double, Double>> endex = new ArrayList<>();
+
+                    for (int i = 0; i < allArtists.size(); i++) {
+                        if (distiributionByNameSplitMenu.getText().equalsIgnoreCase(allArtists.get(i).getArtistName())) {
+                            for (int aDay = 0; aDay < allArtists.get(i).getNights().size(); aDay++) {
+                                giro.add(allArtists.get(i).getNights().get(aDay).getGainOfSales());
+                                dates.add(allArtists.get(i).getNights().get(aDay).getDate());
+                                profit.add(allArtists.get(i).getNights().get(aDay).getProfitOfSales());
+                                sumOfProfit.add(allArtists.get(i).getNights().get(aDay).getProfit());
+                                endex.add(new Pair<Double, Double>(allArtists.get(i).getNights().get(aDay).getAlcoholConsumption(), allArtists.get(i).getNights().get(aDay).getEndex()));
+                            }
+                            break;
+                        }
+                    }
+                    names = EventNight.getNamesOfSaledElements();
+                    if (distiributionByNameCheckGiro.isSelected()) {
+                        drawLineChart(lineChartByName, dates, EventNight.getNamesOfEndex(), endex);
+                        drawStackChartBetweenDateswithInputs(distirubitonByNameStackChart, dates, names, giro, null, informationLabelName);
+                    } else if (distiributionByNameCheckProfit.isSelected()) {
+                        drawLineChart(lineChartByName, dates, EventNight.getNamesOfEndex(), endex);
+                        drawStackChartBetweenDateswithInputs(distirubitonByNameStackChart, dates, names, null, sumOfProfit, informationLabelName);
+                    }
+                }
+            }
+        });
+        moneyMovementSmaller1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (moneyMovementSmaller1.isSelected()) {
+                    ObservableList columns = moneyMoventColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(20);
+                    }
+                } else {
+                    ObservableList columns = moneyMoventColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(40 + (i) * 10);
                     }
                 }
             }
@@ -692,6 +1202,24 @@ public class FXMLDocumentController implements Initializable {
                     for (int i = 0; i < columns.size(); i++) {
                         TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
                         c.setPrefWidth(40 + (i) * 10);
+                    }
+                }
+            }
+        });
+        discountSmaller1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (discountSmaller1.isSelected()) {
+                    ObservableList columns = discountColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(20);
+                    }
+                } else {
+                    ObservableList columns = discountColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(100);
                     }
                 }
             }
@@ -732,6 +1260,24 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+        endexSmaller1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (endexSmaller1.isSelected()) {
+                    ObservableList columns = endexColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(20);
+                    }
+                } else {
+                    ObservableList columns = endexColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(75);
+                    }
+                }
+            }
+        });
         treatSmaller.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -743,6 +1289,24 @@ public class FXMLDocumentController implements Initializable {
                     }
                 } else {
                     ObservableList columns = treatColumn.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(70);
+                    }
+                }
+            }
+        });
+        treatSmaller1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (treatSmaller1.isSelected()) {
+                    ObservableList columns = treatColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(20);
+                    }
+                } else {
+                    ObservableList columns = treatColumn1.getColumns();
                     for (int i = 0; i < columns.size(); i++) {
                         TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
                         c.setPrefWidth(70);
@@ -768,8 +1332,32 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+        salesSmaller1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                if (salesSmaller1.isSelected()) {
+                    ObservableList columns = salesColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(20);
+                    }
+                } else {
+                    ObservableList columns = salesColumn1.getColumns();
+                    for (int i = 0; i < columns.size(); i++) {
+                        TableColumn<String, Double> c = (TableColumn<String, Double>) columns.get(i);
+                        c.setPrefWidth(75);
+                    }
+                }
+            }
+        });
     }
-    public EventHandler<ActionEvent> deneme;
+    public EventHandler<ActionEvent> myHandler2 = new EventHandler<ActionEvent>() {
+        @Override
+        public void handle(final ActionEvent event) {
+            MenuItem selectedItem = (MenuItem) event.getSource();
+            searchTypeSplit.setText(selectedItem.getText().toString());
+        }
+    };
     public EventHandler<ActionEvent> myHandler = new EventHandler<ActionEvent>() {
         @Override
         public void handle(final ActionEvent event) {
@@ -782,21 +1370,21 @@ public class FXMLDocumentController implements Initializable {
         public void handle(ActionEvent event) {
             accordion.setExpandedPane(allNight);
             SimpleDateFormat ft = new SimpleDateFormat("MM-dd-yyyy");
-            allNightTableView.setStyle(" -fx-background-color: #005797;" +
-                                        "-fx-background-insets: 0;" +
-                                        "-fx-background-radius: 1;" +
-                                        "-selected-color: #21D900;" +
-                                        "-fx-text-fill: Black;");
+            allNightTableView.setStyle(" -fx-background-color: #005797;"
+                    + "-fx-background-insets: 0;"
+                    + "-fx-background-radius: 1;"
+                    + "-selected-color: #21D900;"
+                    + "-fx-text-fill: Black;");
 
-            for( int i=0 ;i< allNightTableView.getItems().size() ; i++ ){            
-                Map<String, String> map=(Map<String, String>) allNightTableView.getItems().get(i);
-                if( map.get("Tarih").equals(clickedDate)){
+            for (int i = 0; i < allNightTableView.getItems().size(); i++) {
+                Map<String, String> map = (Map<String, String>) allNightTableView.getItems().get(i);
+                if (map.get("Tarih").equals(clickedDate)) {
                     allNightTableView.getSelectionModel().select(i);
-                    
+
                     break;
                 }
             }
-           
+
         }
     };
 
@@ -811,13 +1399,18 @@ public class FXMLDocumentController implements Initializable {
         return r;
     }
 
-    private ArrayList<EventNight> creatAllNightsFromExcel(myExcelFile Data, HashMap<String, Double> unitCosts, HashMap<String, Double> unitSalesPrice) {
+    private ArrayList<EventNight> creatAllNightsFromExcel(myExcelFile Data, HashMap<String, Double> unitCosts, HashMap<String, Double> unitSalesPrice, HashMap<String, EventNight> allN) {
         ArrayList<EventNight> e = new ArrayList<>();
         String artistName = "";
         int size = Data.getSheetSize();
+        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
         for (int i = 1; i < size; i++) {
             artistName = "";
             Date date = (Date) Data.get("E22", i);
+
+            if (allN.containsKey(ft.format(date))) {
+                continue;
+            }
             Pair<Integer, Integer> p = new Pair((int) ((double) Data.get("B3", i) / 1), (int) ((double) Data.get("B4", i) / 1));
 
             EventNight eN = new EventNight((Date) date,
@@ -904,44 +1497,48 @@ public class FXMLDocumentController implements Initializable {
     }
 
     private void drawStackChartBetweenDateswithInputs(StackedBarChart<?, ?> stackChart, ArrayList<Date> dates, String[] names, ArrayList<double[]> values, ArrayList<Double> sumofP, Label l) {
-        StackedBarChart<String, Number> sbc = (StackedBarChart<String, Number>) stackChart;
-        sbc.getData().clear();
-        ArrayList<String> cloumns = new ArrayList<>();
-        for (int i = 0; i < dates.size(); i++) {
-            SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
-            cloumns.add(ft.format(dates.get(i)).toString());
-        }
-        CategoryAxis xAxis = (CategoryAxis) sbc.getXAxis();
+        StackedBarChart<String, Number> sbc = (StackedBarChart<String, Number>) stackChart;        
+        sbc.getData().clear();        
+        CategoryAxis xAxis = (CategoryAxis) sbc.getXAxis();        
         NumberAxis yAxis = (NumberAxis) sbc.getYAxis();
-        // xAxis.setTickLabelRotation(90);        
         xAxis.getCategories().clear();
+        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
+        xAxis.setAnimated(false);
+        yAxis.setAnimated(false);       
+        yAxis.setAutoRanging(true);
         XYChart.Series<String, Number>[] series;
         if (sumofP == null) {
             series = new XYChart.Series[names.length];
         } else {
             series = new XYChart.Series[1];
         }
-        for (int i = 0; i < series.length; i++) {
+        int size=series.length;
+        for ( int i = 0; i <size ; i++ ) {
             series[i] = new XYChart.Series<String, Number>();
+                           
             if (sumofP == null) {
                 series[i].setName(names[i].toString());
             } else {
-                series[i].setName("Toplam Ciro Değerleri");
+                series[i].setName("Toplam Kar Değerleri");
             }
             for (int j = 0; j < dates.size(); j++) {
+                String date=ft.format(dates.get(j));
                 if (sumofP == null) {
-                    series[i].getData().add(new XYChart.Data<String, Number>(cloumns.get(j).toString(), values.get(j)[i]));
+                    series[i].getData().add(new XYChart.Data<String, Number>(date, values.get(j)[i]));
                 } else {
-                    series[i].getData().add(new XYChart.Data<String, Number>(cloumns.get(j).toString(), sumofP.get(j)));
+                    System.out.println("Kar> "+sumofP.get(j)+" date> "+ft.format(dates.get(j)));
+                    series[i].getData().add(new XYChart.Data<String, Number>(date, sumofP.get(j)));
+                    
                 }
             }
             sbc.getData().add(series[i]);
         }
+        System.out.println("lovwe>"+yAxis.getLowerBound());
+        
         for (Series<String, Number> serie : sbc.getData()) {
             for (XYChart.Data<String, Number> item : serie.getData()) {
                 item.getNode().setOnMousePressed((MouseEvent event) -> {
                     if (l != null) {
-                        SimpleDateFormat ft = new SimpleDateFormat("dd-MM-yyyy");
                         for (int i = 0; i < this.allNights.size(); i++) {
                             EventNight e = this.allNights.get(i);
                             if (ft.format(e.getDate()).toString().equals(item.getXValue())) {
@@ -989,7 +1586,7 @@ public class FXMLDocumentController implements Initializable {
         return false;
     }
 
-    private ObservableList<Map> generateDataInMap() {
+    private ObservableList generateDataInMap(ArrayList<EventNight> allNights) {
         ObservableList<Map> allData = FXCollections.observableArrayList();
         for (int i = 0; i < allNights.size(); i++) {
             Map<String, String> dataRow = new HashMap<>();
@@ -1032,6 +1629,10 @@ public class FXMLDocumentController implements Initializable {
         LineChart<String, Number> lineChart = (LineChart<String, Number>) chart;
         lineChart.getData().clear();
         SimpleDateFormat ft = new SimpleDateFormat("dd-MM");
+        CategoryAxis xAxis = (CategoryAxis) lineChart.getXAxis();        
+        NumberAxis yAxis = (NumberAxis) lineChart.getYAxis();
+        xAxis.setAnimated(false);
+        yAxis.setAnimated(false);
         XYChart.Series[] series = new XYChart.Series[names.length];
         for (int i = 0; i < names.length; i++) {
             series[i] = new XYChart.Series();
@@ -1050,14 +1651,62 @@ public class FXMLDocumentController implements Initializable {
 
     private void findAndDrawAnomalies(ArrayList<EventNight> allNights, StackedBarChart<?, ?> anomaliesStack, LineChart<?, ?> anomaliesLine) {
         ArrayList<Double> nightsEndex = new ArrayList<>();
+        ArrayList<Double> standartD = new ArrayList<>();
+        ArrayList<Double> type8 = new ArrayList<>();
+        ArrayList<Double> type25 = new ArrayList<>();
+        ArrayList<Double> type40 = new ArrayList<>();
+        ArrayList<Double> type70 = new ArrayList<>();
+
         for (int i = 0; i < allNights.size(); i++) {
             nightsEndex.add(allNights.get(i).getEndex());
+            if (allNights.get(i).getEventType().equals("Normal Gün")) {
+                standartD.add(allNights.get(i).getEndex());
+            } else if (allNights.get(i).getEventType().equals("8 Binlik")) {
+                type8.add(allNights.get(i).getEndex());
+            } else if (allNights.get(i).getEventType().equals("25 Binlik")) {
+                type25.add(allNights.get(i).getEndex());
+            } else if (allNights.get(i).getEventType().equals("40 Binlik")) {
+                type40.add(allNights.get(i).getEndex());
+            } else if (allNights.get(i).getEventType().equals("+70 Binlik")) {
+                type70.add(allNights.get(i).getEndex());
+            }
         }
+
         Collections.sort(nightsEndex);
         Pair<Double, Double> loverBoundUpperBound = findBounderys(nightsEndex);
         double diffrence = Math.abs(loverBoundUpperBound.getKey() - loverBoundUpperBound.getValue());
         double lowerB = loverBoundUpperBound.getKey() - 1.5 * diffrence;
         double upperB = loverBoundUpperBound.getValue() + 1.5 * diffrence;
+
+        Collections.sort(type8);
+        Pair<Double, Double> type8B = findBounderys(type8);
+        double diffrence8 = Math.abs(type8B.getKey() - type8B.getValue());
+        double type8LB = type8B.getKey() - 1.5 * diffrence8;
+        double type8UB = type8B.getValue() + 1.5 * diffrence8;
+
+        Collections.sort(type25);
+        Pair<Double, Double> type25B = findBounderys(type25);
+        double diffrence25 = Math.abs(type25B.getKey() - type25B.getValue());
+        double type25LB = type25B.getKey() - 1.5 * diffrence25;
+        double type25UB = type25B.getValue() + 1.5 * diffrence25;
+
+        Collections.sort(type40);
+        Pair<Double, Double> type40B = findBounderys(type40);
+        double diffrence40 = Math.abs(type40B.getKey() - type40B.getValue());
+        double type40LB = type40B.getKey() - 1.5 * diffrence40;
+        double type40UB = type40B.getValue() + 1.5 * diffrence40;
+
+        Collections.sort(type70);
+        Pair<Double, Double> type70B = findBounderys(type70);
+        double diffrence70 = Math.abs(type70B.getKey() - type70B.getValue());
+        double type70LB = type70B.getKey() - 1.5 * diffrence70;
+        double type70UB = type70B.getValue() + 1.5 * diffrence70;
+
+        Collections.sort(standartD);
+        Pair<Double, Double> typeNOB = findBounderys(standartD);
+        double diffrenceNO = Math.abs(typeNOB.getKey() - typeNOB.getValue());
+        double typeNOLB = typeNOB.getKey() - 1.5 * diffrenceNO;
+        double typeNOUB = typeNOB.getValue() + 1.5 * diffrenceNO;
 
         String names[] = EventNight.getNamesOfSaledElements();
         ArrayList<double[]> giro = new ArrayList<>();
@@ -1067,6 +1716,48 @@ public class FXMLDocumentController implements Initializable {
         ArrayList<Pair<Double, Double>> endex = new ArrayList<>();
 
         for (int i = 0; i < allNights.size(); i++) {
+
+            if (allNights.get(i).getEventType().equals("Normal Gün")) {
+                if (allNights.get(i).getEndex() >= typeNOUB || allNights.get(i).getEndex() <= typeNOLB) {
+                    giro.add(allNights.get(i).getGainOfSales());
+                    dates.add(allNights.get(i).getDate());
+                    profit.add(allNights.get(i).getProfitOfSales());
+                    sumOfProfit.add(allNights.get(i).getProfit());
+                    endex.add(new Pair<Double, Double>(allNights.get(i).getAlcoholConsumption(), allNights.get(i).getEndex()));
+                }
+            } else if (allNights.get(i).getEventType().equals("8 Binlik")) {
+                if (allNights.get(i).getEndex() >= type8UB || allNights.get(i).getEndex() <= type8LB) {
+                    giro.add(allNights.get(i).getGainOfSales());
+                    dates.add(allNights.get(i).getDate());
+                    profit.add(allNights.get(i).getProfitOfSales());
+                    sumOfProfit.add(allNights.get(i).getProfit());
+                    endex.add(new Pair<Double, Double>(allNights.get(i).getAlcoholConsumption(), allNights.get(i).getEndex()));
+                }
+            } else if (allNights.get(i).getEventType().equals("25 Binlik")) {
+                if (allNights.get(i).getEndex() >= type25UB || allNights.get(i).getEndex() <= type25LB) {
+                    giro.add(allNights.get(i).getGainOfSales());
+                    dates.add(allNights.get(i).getDate());
+                    profit.add(allNights.get(i).getProfitOfSales());
+                    sumOfProfit.add(allNights.get(i).getProfit());
+                    endex.add(new Pair<Double, Double>(allNights.get(i).getAlcoholConsumption(), allNights.get(i).getEndex()));
+                }
+            } else if (allNights.get(i).getEventType().equals("40 Binlik")) {
+                if (allNights.get(i).getEndex() >= type40UB || allNights.get(i).getEndex() <= type40LB) {
+                    giro.add(allNights.get(i).getGainOfSales());
+                    dates.add(allNights.get(i).getDate());
+                    profit.add(allNights.get(i).getProfitOfSales());
+                    sumOfProfit.add(allNights.get(i).getProfit());
+                    endex.add(new Pair<Double, Double>(allNights.get(i).getAlcoholConsumption(), allNights.get(i).getEndex()));
+                }
+            } else if (allNights.get(i).getEventType().equals("+70 Binlik")) {
+                if (allNights.get(i).getEndex() >= type70UB || allNights.get(i).getEndex() <= type70LB) {
+                    giro.add(allNights.get(i).getGainOfSales());
+                    dates.add(allNights.get(i).getDate());
+                    profit.add(allNights.get(i).getProfitOfSales());
+                    sumOfProfit.add(allNights.get(i).getProfit());
+                    endex.add(new Pair<Double, Double>(allNights.get(i).getAlcoholConsumption(), allNights.get(i).getEndex()));
+                }
+            }
             if (allNights.get(i).getEndex() >= upperB || allNights.get(i).getEndex() <= lowerB) {
                 giro.add(allNights.get(i).getGainOfSales());
                 dates.add(allNights.get(i).getDate());
@@ -1082,6 +1773,9 @@ public class FXMLDocumentController implements Initializable {
 
     private Pair<Double, Double> findBounderys(ArrayList<Double> nightsEndex) {
         int size = nightsEndex.size();
+        if (size <= 4) {
+            return new Pair<Double, Double>(-99999.0, 9999999.0);
+        }
         double Q1;
         double Q3;
         int MLoc = (int) size / 2;
@@ -1101,8 +1795,6 @@ public class FXMLDocumentController implements Initializable {
         } else {
             Q3 = rightList.get(rsize / 2);
         }
-        System.out.println("Q1>" + Q1 + "  Q2>" + Q3);
         return new Pair<Double, Double>(Q1, Q3);
     }
-
 }
