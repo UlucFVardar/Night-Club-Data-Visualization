@@ -6,7 +6,7 @@ from datetime import date
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://dumi41713873106:joAEY87l)@160.153.153.41:3307/dumi41713873106'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'Your Key'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.debug = True
 db = SQLAlchemy(app)
