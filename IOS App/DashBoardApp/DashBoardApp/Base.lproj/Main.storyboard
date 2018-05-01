@@ -131,7 +131,7 @@
                                                     <constraint firstItem="JH3-Al-EYQ" firstAttribute="top" secondItem="nPw-gg-GBe" secondAttribute="top" constant="91" id="6eN-n0-LXF"/>
                                                 </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hL-3W-Cos" customClass="PieChartView" customModule="Charts">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3hL-3W-Cos" customClass="BarChartView" customModule="Charts">
                                                 <rect key="frame" x="8" y="606" width="297" height="309"/>
                                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <userDefinedRuntimeAttributes>
@@ -143,7 +143,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bGP-nk-Gh3">
                                                 <rect key="frame" x="8" y="963" width="297" height="128"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pR0-vi-cis">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Good Job! " textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="pR0-vi-cis">
                                                         <rect key="frame" x="18" y="16" width="269" height="97"/>
                                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.47501070205479451" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -219,6 +219,12 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="1250"/>
                     <connections>
+                        <outlet property="artistLabel" destination="tmy-bi-vZX" id="yve-PP-dx2"/>
+                        <outlet property="barChart" destination="3hL-3W-Cos" id="ea2-pf-3U7"/>
+                        <outlet property="commentTextField" destination="pR0-vi-cis" id="UN3-sF-Ei1"/>
+                        <outlet property="dateLabel" destination="K4Z-hQ-QEb" id="F9P-St-6M9"/>
+                        <outlet property="endorsementLabel" destination="dK2-sE-DsR" id="08J-Vq-Iur"/>
+                        <outlet property="hiUserLabel" destination="eGC-vi-kNh" id="vMp-6v-WHx"/>
                         <outlet property="pieChart" destination="JH3-Al-EYQ" id="QMy-xf-OcO"/>
                     </connections>
                 </viewController>
@@ -612,7 +618,7 @@
                                                     <constraint firstItem="5fl-xu-aGH" firstAttribute="top" secondItem="wfa-S0-CYB" secondAttribute="top" constant="91" id="oeL-uy-FMh"/>
                                                 </constraints>
                                             </stackView>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1A-Eo-13Y" customClass="PieChartView" customModule="Charts">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l1A-Eo-13Y" customClass="BarChartView" customModule="Charts">
                                                 <rect key="frame" x="8" y="606" width="297" height="309"/>
                                                 <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <userDefinedRuntimeAttributes>
@@ -624,7 +630,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XZv-tW-Abf">
                                                 <rect key="frame" x="8" y="963" width="297" height="128"/>
                                                 <subviews>
-                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Comment" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gv0-bb-6I7">
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Good Job!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gv0-bb-6I7">
                                                         <rect key="frame" x="18" y="16" width="269" height="97"/>
                                                         <color key="backgroundColor" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="0.47501070210000002" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -691,12 +697,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="btV-VR-cQV"/>
                     </view>
-                    <navigationItem key="navigationItem" id="lPQ-Cv-AH1">
-                        <barButtonItem key="rightBarButtonItem" title="Log Out" id="wvh-6Y-Z1c"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="lPQ-Cv-AH1"/>
                     <size key="freeformSize" width="375" height="1250"/>
                     <connections>
                         <outlet property="artistLabel" destination="AY2-Nd-OW6" id="UmV-GT-29I"/>
+                        <outlet property="barChart" destination="l1A-Eo-13Y" id="y4N-39-YEk"/>
                         <outlet property="commentTextField" destination="gv0-bb-6I7" id="UBo-0x-9CB"/>
                         <outlet property="dateLabel" destination="CYf-Ty-JfK" id="QFH-DJ-DjW"/>
                         <outlet property="endorsementLabel" destination="Smc-yO-UK5" id="6CA-Fj-2Jh"/>
