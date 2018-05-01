@@ -12,11 +12,8 @@ import Charts
 class customCell: UITableViewCell {
 
     @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var pieChart: PieChartView!
-    @IBOutlet weak var commentText: UITextView!
-    
-    var iosDataEntry = PieChartDataEntry(value: 0)
-    var macDataEntry = PieChartDataEntry(value: 0)
+    @IBOutlet weak var endorsement: UILabel!
+    @IBOutlet weak var artist: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
