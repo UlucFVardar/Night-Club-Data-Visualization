@@ -61,6 +61,18 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 
 /**
  *
@@ -151,6 +163,8 @@ public class FXMLDocumentController implements Initializable {
 
     @FXML
     private Button showDeeply1;
+    @FXML
+    private Button telegramSend;
 
     @FXML
     private TableColumn<?, ?> treatColumn1;
@@ -550,6 +564,7 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+        
         GMin.lengthProperty().addListener(new ChangeListener<Number>() {
             @Override
             public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -862,8 +877,13 @@ public class FXMLDocumentController implements Initializable {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (InvalidFormatException ex) {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (JSONException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                //pushDB(allNights); *****db push function
             }
+
+            
 
         });
         datePiccerForDaylyProfit.setOnAction(new EventHandler<ActionEvent>() {
@@ -1350,6 +1370,26 @@ public class FXMLDocumentController implements Initializable {
                 }
             }
         });
+        telegramSend.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                URL url = null;
+                HttpURLConnection connection = null;
+                String str = "https://api.telegram.org/bot577945846:AAGi470sszD_Coz4XDj13i8ax9Qzdejy0A0/sendmessage?chat_id=443290984&parse_mode=HTML&disable_web_page_preview=true&text=Buyrun%20"+choosenDate.toString()+"%20tarihi%20için%20raporunuz.";
+                System.out.println(str);
+                try {
+                    url = new URL(str);
+                } catch (MalformedURLException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                try {
+                    //connection = (HttpURLConnection) url.openConnection();
+                    InputStream is = url.openStream();
+                } catch (IOException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
     }
     public EventHandler<ActionEvent> myHandler2 = new EventHandler<ActionEvent>() {
         @Override
@@ -1388,6 +1428,7 @@ public class FXMLDocumentController implements Initializable {
         }
     };
 
+  
     private HashMap<String, Double> readUnitCostFromExcel(myExcelFile Data) {
         HashMap<String, Double> r = new HashMap<String, Double>();
         for (int i = 9; i <= 15; i++) {
@@ -1399,7 +1440,7 @@ public class FXMLDocumentController implements Initializable {
         return r;
     }
 
-    private ArrayList<EventNight> creatAllNightsFromExcel(myExcelFile Data, HashMap<String, Double> unitCosts, HashMap<String, Double> unitSalesPrice, HashMap<String, EventNight> allN) {
+    private ArrayList<EventNight> creatAllNightsFromExcel(myExcelFile Data, HashMap<String, Double> unitCosts, HashMap<String, Double> unitSalesPrice, HashMap<String, EventNight> allN) throws IOException, JSONException {
         ArrayList<EventNight> e = new ArrayList<>();
         String artistName = "";
         int size = Data.getSheetSize();
@@ -1460,7 +1501,7 @@ public class FXMLDocumentController implements Initializable {
         for (int i = 0; i < e.size(); i++) {
             e.get(i).calculateEndorsement_and_Profit(unitSalesPrice, unitCosts);
         }
-
+        
         return e;
     }
 
@@ -1796,5 +1837,102 @@ public class FXMLDocumentController implements Initializable {
             Q3 = rightList.get(rsize / 2);
         }
         return new Pair<Double, Double>(Q1, Q3);
+    }
+   
+    public JSONObject createJson(EventNight e) throws JSONException {
+        JSONObject json = new JSONObject();
+        //Event Night
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+        Date d=e.getDate();                               
+        String str=ft.format(d);
+        json.put("Date", ft.format(d).toString() );
+        json.put("EventType",e.getEventType());
+        json.put("Comment", e.getComment());
+        
+        //Artist
+        String str2="";
+        if(e.getArtist()!=null)
+            str2=e.getArtist().getArtistName().toString();
+            
+        json.put("surname", str2);
+        json.put("name", "");
+        
+        //Days of Artist
+        json.put("Price", Double.toString((double)e.getArtistCost()));
+        json.put("ArtistType", e.getEventType());
+        
+        //Money Flow
+        json.put("Cost", "");
+        json.put("Endorsement", Double.toString((double)e.getEndorsement()));
+        json.put("Profit", Double.toString((double)e.getProfit()));
+        json.put("Tip", Double.toString((double)e.getTip()));
+        json.put("DontPay", Double.toString((double)e.getDontPay()));
+        
+        //Discount
+        json.put("_70_ClNum", Integer.toString((int)e.getDiscountBottle()));
+        json.put("_35_ClNum", "");
+        json.put("DiscOf_70_",Integer.toString((int)e.getDiscount()));
+        json.put("Discof_35_","");
+        
+        //Indexes
+        json.put("GeneralIndex", Double.toString((double) e.getEndex()));
+        json.put("AlcoholIndex", Double.toString((double)e.getAlcoholConsumption()));
+        
+        json.put("SalesNumber", Integer.toString((int)e.getSalesOfNight()[0]));
+        json.put("SumOfSales", Double.toString((double)e.getGainOfSales()[0]));
+        json.put("SumOfProfit", Double.toString((double)e.getProfitOfSales()[0]));
+        json.put("Name", e.getNameOfSales()[0]);
+        
+        json.put("_70_Cl", Integer.toString((int)e.getIkramOfNight()[0]));
+        json.put("_35_Cl", Integer.toString((int)e.getIkramOfNight()[1]));
+        json.put("Confety", Integer.toString((int)e.getIkramOfNight()[2]));
+        return json;
+    }
+    private void pushDB(ArrayList<EventNight> allNights) {
+        MyThread myThread;
+        myThread = new MyThread(null, false,allNights);
+        myThread.start();
+       
+    }
+    public class MyThread extends Thread {
+        JSONObject json;
+        boolean flag;
+        ArrayList<EventNight> allNights;
+        public MyThread(JSONObject o, boolean f,ArrayList<EventNight> allNights) {
+            this.json = o;
+            this.flag = f;
+            this.allNights=allNights;
+        }
+        public void run() {
+            if (this.flag == false) {
+                try {
+                    MyThread myThread = new MyThread(createJson(this.allNights.get(0)),true,null);
+                    myThread.start();
+                    for (int i = 1; i < this.allNights.size()  ;) {
+                        if (myThread.isAlive() == false) {
+                            System.out.println("burda");
+                            myThread = new MyThread(createJson(this.allNights.get(i)),true,null);
+                            myThread.start();
+                            i++;
+                        }
+                    }
+                } catch (JSONException ex) {
+                    Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                try {
+                    CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+                    HttpPost request = new HttpPost("https://stormy-bayou-55176.herokuapp.com/post/1234");
+                    System.out.println(this.json.toString());
+                    StringEntity params = new StringEntity(this.json.toString());
+                    request.addHeader("content-type", "application/json");
+                    request.setEntity(params);
+                    httpClient.execute(request);
+                    httpClient.close();
+                } catch (Exception e) {
+                    System.out.println(e.toString());
+                }
+            }
+        }
     }
 }

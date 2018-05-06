@@ -531,8 +531,7 @@
                      <top>
                         <AnchorPane prefHeight="38.0" prefWidth="1068.0" BorderPane.alignment="CENTER">
                            <children>
-                              <Button layoutX="146.0" layoutY="105.0" mnemonicParsing="false" text="Tümünü Pdf olarak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0" />
-                              <Button layoutX="156.0" layoutY="115.0" mnemonicParsing="false" text="Seçili Günü Pdf olrak çıkart" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+                              <Button fx:id="telegramSend" layoutX="156.0" layoutY="115.0" mnemonicParsing="false" text="Telegram Raporu Gönder" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
                            </children>
                         </AnchorPane>
                      </top>

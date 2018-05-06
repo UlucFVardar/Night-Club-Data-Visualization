@@ -8,14 +8,56 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="DataVisilation.jar" size="92288" download="eager" />
+    <jar href="DataVisilation.jar" size="96869" download="eager" />
     <jar href="lib/commons-codec-1.10.jar" size="284184" download="eager" />
     <jar href="lib/commons-collections4-4.1.jar" size="751238" download="eager" />
     <jar href="lib/commons-logging-1.2.jar" size="61829" download="eager" />
+    <jar href="lib/core-3.3.0.jar" size="541078" download="eager" />
     <jar href="lib/curvesapi-1.04.jar" size="98365" download="eager" />
+    <jar href="lib/fluent-hc-4.5.5.jar" size="31427" download="eager" />
+    <jar href="lib/httpclient-4.5.5.jar" size="766123" download="eager" />
+    <jar href="lib/httpclient-cache-4.5.5.jar" size="161550" download="eager" />
+    <jar href="lib/httpclient-win-4.5.5.jar" size="17726" download="eager" />
+    <jar href="lib/httpcore-4.4.9.jar" size="325491" download="eager" />
+    <jar href="lib/httpmime-4.5.5.jar" size="41753" download="eager" />
+    <jar href="lib/hyph-7.1.1.jar" size="963273" download="eager" />
+    <jar href="lib/itext7-barcodes-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-barcodes-7.0.2-sources.jar" size="141381" download="eager" />
+    <jar href="lib/itext7-barcodes-7.0.2.jar" size="141546" download="eager" />
+    <jar href="lib/itext7-font-asian-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-font-asian-7.0.2.jar" size="2166052" download="eager" />
+    <jar href="lib/itext7-forms-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-forms-7.0.2-sources.jar" size="62174" download="eager" />
+    <jar href="lib/itext7-forms-7.0.2.jar" size="68056" download="eager" />
+    <jar href="lib/itext7-hyph-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-hyph-7.0.2.jar" size="963216" download="eager" />
+    <jar href="lib/itext7-io-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-io-7.0.2-sources.jar" size="469917" download="eager" />
+    <jar href="lib/itext7-io-7.0.2.jar" size="660267" download="eager" />
+    <jar href="lib/itext7-kernel-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-kernel-7.0.2-sources.jar" size="1023639" download="eager" />
+    <jar href="lib/itext7-kernel-7.0.2.jar" size="1019325" download="eager" />
+    <jar href="lib/itext7-layout-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-layout-7.0.2-sources.jar" size="334711" download="eager" />
+    <jar href="lib/itext7-layout-7.0.2.jar" size="318449" download="eager" />
+    <jar href="lib/itext7-pdfa-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-pdfa-7.0.2-sources.jar" size="36614" download="eager" />
+    <jar href="lib/itext7-pdfa-7.0.2.jar" size="45773" download="eager" />
+    <jar href="lib/itext7-pdftest-7.0.2-sources.jar" size="28111" download="eager" />
+    <jar href="lib/itext7-pdftest-7.0.2.jar" size="19744" download="eager" />
+    <jar href="lib/itext7-sign-7.0.2-javadoc.jar" size="358" download="eager" />
+    <jar href="lib/itext7-sign-7.0.2-sources.jar" size="120244" download="eager" />
+    <jar href="lib/itext7-sign-7.0.2.jar" size="119048" download="eager" />
+    <jar href="lib/jai_codec.jar" size="258160" download="eager" />
+    <jar href="lib/java-json.jar" size="84697" download="eager" />
+    <jar href="lib/javase-3.3.0.jar" size="41451" download="eager" />
+    <jar href="lib/jna-4.4.0.jar" size="1091208" download="eager" />
+    <jar href="lib/jna-platform-4.4.0.jar" size="2281814" download="eager" />
+    <jar href="lib/json-20180130.jar" size="62116" download="eager" />
     <jar href="lib/junit-4.12.jar" size="314932" download="eager" />
-    <jar href="lib/log4j-1.2.17.jar" size="489884" download="eager" />
+    <jar href="lib/pdfbox-app-2.0.8 (1).jar" size="8029018" download="eager" />
     <jar href="lib/poi-3.17.jar" size="2701171" download="eager" />
+    <jar href="lib/poi-examples-3.17.jar" size="374509" download="eager" />
     <jar href="lib/poi-excelant-3.17.jar" size="31218" download="eager" />
     <jar href="lib/poi-ooxml-3.17.jar" size="1479023" download="eager" />
     <jar href="lib/poi-ooxml-schemas-3.17.jar" size="5924600" download="eager" />
