@@ -1,7 +1,7 @@
 these are the source code of the our api's. these python2.7 codes are located in AWS Lambda function
 Lambda function and API Gate Way tools we create APIs 
 
->Here how they use;
+>Here how to use;
  
 GetAll;
 https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/gelall
