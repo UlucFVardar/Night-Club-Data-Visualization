@@ -17,7 +17,7 @@ def main(event, context):
         forms = []
         info="{"
         with conn.cursor() as cur:
-            cur.execute("""call innodb.giveLast10day();""")
+            cur.execute("""call innodb.listAll();""")
             conn.commit()
             cur.close()
         for row in cur:
