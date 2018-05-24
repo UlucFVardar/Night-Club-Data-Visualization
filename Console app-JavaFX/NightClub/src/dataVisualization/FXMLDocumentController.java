@@ -5,6 +5,7 @@
  */
 package dataVisualization;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -63,6 +64,7 @@ import javafx.util.Pair;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import org.apache.http.client.methods.HttpPost;
@@ -880,7 +882,7 @@ public class FXMLDocumentController implements Initializable {
                 } catch (JSONException ex) {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                //pushDB(allNights); *****db push function
+                pushDB(allNights); //*****db push function
             }
 
             
@@ -1839,79 +1841,114 @@ public class FXMLDocumentController implements Initializable {
         return new Pair<Double, Double>(Q1, Q3);
     }
    
-    public JSONObject createJson(EventNight e) throws JSONException {
-        JSONObject json = new JSONObject();
-        //Event Night
+    public String createInfo(EventNight e) throws JSONException {
+        String info="";
+        String inf="";
+        //Artist
+        String str2="isimsiz";
+        if(e.getArtist()!=null)
+            str2=convert(e.getArtist().getArtistName().toString());
+        
+        info+="artistName="+str2+"&";
+        info+="artistPrice="+Double.toString((double)e.getArtistCost())+"&";
+        info+="eventType="+ e.getEventType() +"&";
         SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
         Date d=e.getDate();                               
         String str=ft.format(d);
-        json.put("Date", ft.format(d).toString() );
-        json.put("EventType",e.getEventType());
-        json.put("Comment", e.getComment());
+        info+="eventDate="+str+"&";
+        info+="eventComment="+"null"+"&";
+        info+="totalProfit="+ Double.toString((double)e.getProfit())+"&";
+        info+="totalEndersement="+Double.toString((double)e.getEndorsement())+"&";
+        info+="tip="+Double.toString((double)e.getTip())+"&"; 
+        info+="dontPay="+Double.toString((double)e.getDontPay())+"&";
+        info+="totalCost="+ "2"+"&";    //
+        info+="nameOfSales="+"70cl 35cl konfeti sigara bardak"+"&";
+        String s=e.getSalesOfNight()[0] +"|"+e.getSalesOfNight()[1]+"|"+e.getSalesOfNight()[2]+"|"+e.getSalesOfNight()[3]+"|"+e.getSalesOfNight()[4];
+        String s2=e.getProfitOfSales()[0]+"|"+e.getProfitOfSales()[1]+"|"+e.getProfitOfSales()[2]+"|"+e.getProfitOfSales()[3]+"|"+e.getProfitOfSales()[4];
+        String s3=e.getGainOfSales()[0]+"|"+e.getGainOfSales()[1]+"|"+e.getGainOfSales()[2]+"|"+e.getGainOfSales()[3]+"|"+e.getGainOfSales()[4];
+        info+="sumOfProfit="+ s2 +"&";    //
+        info+="sumOfGiro="+s3+"&";      //  
+        info+="salesNumber="+s+"&";    //
+        info+="cl70Number="+ Integer.toString((int)e.getIkramOfNight()[0])+"&";
+        info+="cl35Number="+ Integer.toString((int)e.getIkramOfNight()[1])+"&";
+        info+="confetyNumber="+ Integer.toString((int)e.getIkramOfNight()[2])+"&";
+        info+="bottleNumber="+ Integer.toString((int)e.getDiscountBottle())+"&";
+        info+="totalDiscount="+ Integer.toString((int)e.getDiscount())+"&";
+        info+="alcoholIndex="+ Double.toString((double)e.getAlcoholConsumption())+"&";
+        info+="generalIndex="+ Double.toString((double) e.getEndex())+"&";
+        info+="grupEnterenceFree="+ Double.toString((double) e.getGroupEntryFee());                     
         
-        //Artist
-        String str2="";
-        if(e.getArtist()!=null)
-            str2=e.getArtist().getArtistName().toString();
-            
-        json.put("surname", str2);
-        json.put("name", "");
+        inf+="\""+str2+"\",";
+        inf+=Double.toString((double)e.getArtistCost())+",";
+        inf+= "\""+e.getEventType()+"\",";
+        inf+= "\""+str+"\",";
+        inf+="\"null\",";
+        inf+=Double.toString((double)e.getProfit())+",";
+        inf+=Double.toString((double)e.getEndorsement())+",";
+        inf+=Double.toString((double)e.getTip())+",";        
+        inf+=Double.toString((double)e.getDontPay())+",";
+        inf+="2,";
+        inf+="\"70cl 35cl konfeti sigara bardak\",";
+        inf+="\""+s2+"\",";
+        inf+="\""+s3+"\",";
+        inf+="\""+s+"\",";
         
-        //Days of Artist
-        json.put("Price", Double.toString((double)e.getArtistCost()));
-        json.put("ArtistType", e.getEventType());
+        inf+=Integer.toString((int)e.getIkramOfNight()[0])+",";
+        inf+=Integer.toString((int)e.getIkramOfNight()[1])+",";
+        inf+=Integer.toString((int)e.getIkramOfNight()[2])+",";
+        inf+= Integer.toString((int)e.getDiscountBottle())+",";
+        inf+=Integer.toString((int)e.getDiscount())+",";
+        inf+= Double.toString((double)e.getAlcoholConsumption())+",";
+        inf+=Double.toString((double) e.getEndex())+",";
+        inf+=Double.toString((double) e.getGroupEntryFee());
+        System.out.println("call innodb.addEventNight  ( "+inf+");");
         
-        //Money Flow
-        json.put("Cost", "");
-        json.put("Endorsement", Double.toString((double)e.getEndorsement()));
-        json.put("Profit", Double.toString((double)e.getProfit()));
-        json.put("Tip", Double.toString((double)e.getTip()));
-        json.put("DontPay", Double.toString((double)e.getDontPay()));
         
-        //Discount
-        json.put("_70_ClNum", Integer.toString((int)e.getDiscountBottle()));
-        json.put("_35_ClNum", "");
-        json.put("DiscOf_70_",Integer.toString((int)e.getDiscount()));
-        json.put("Discof_35_","");
         
-        //Indexes
-        json.put("GeneralIndex", Double.toString((double) e.getEndex()));
-        json.put("AlcoholIndex", Double.toString((double)e.getAlcoholConsumption()));
         
-        json.put("SalesNumber", Integer.toString((int)e.getSalesOfNight()[0]));
-        json.put("SumOfSales", Double.toString((double)e.getGainOfSales()[0]));
-        json.put("SumOfProfit", Double.toString((double)e.getProfitOfSales()[0]));
-        json.put("Name", e.getNameOfSales()[0]);
-        
-        json.put("_70_Cl", Integer.toString((int)e.getIkramOfNight()[0]));
-        json.put("_35_Cl", Integer.toString((int)e.getIkramOfNight()[1]));
-        json.put("Confety", Integer.toString((int)e.getIkramOfNight()[2]));
-        return json;
+        return info;    
     }
     private void pushDB(ArrayList<EventNight> allNights) {
         MyThread myThread;
         myThread = new MyThread(null, false,allNights);
         myThread.start();
        
-    }
+    } public String convert(String a){
+                a = a.replace('İ', 'I');
+                a = a.replace('Ş', 's');
+                a = a.replace('Ç', 'C');
+                a = a.replace('Ü', 'U');
+                a = a.replace('Ö', 'O');
+                a = a.replace('ş', 's');
+                a = a.replace('ğ', 'g');
+                a = a.replace('ı', 'i');
+                a = a.replace('ö', 'o');
+                a = a.replace('ü', 'u');
+                a = a.replace('ç', 'c');    
+                //a = a.replace(' ', '-');    
+                
+                   
+            return a;
+        }
     public class MyThread extends Thread {
-        JSONObject json;
+        
+        String info;
         boolean flag;
         ArrayList<EventNight> allNights;
-        public MyThread(JSONObject o, boolean f,ArrayList<EventNight> allNights) {
-            this.json = o;
+        public MyThread(String o, boolean f,ArrayList<EventNight> allNights) {
+            this.info = o;
             this.flag = f;
             this.allNights=allNights;
         }
+       
         public void run() {
             if (this.flag == false) {
                 try {
-                    MyThread myThread = new MyThread(createJson(this.allNights.get(0)),true,null);
+                    MyThread myThread = new MyThread(createInfo(this.allNights.get(0)),true,null);
                     myThread.start();
                     for (int i = 1; i < this.allNights.size()  ;) {
                         if (myThread.isAlive() == false) {
-                            System.out.println("burda");
-                            myThread = new MyThread(createJson(this.allNights.get(i)),true,null);
+                            myThread = new MyThread(createInfo(this.allNights.get(i)),true,null);
                             myThread.start();
                             i++;
                         }
@@ -1920,15 +1957,17 @@ public class FXMLDocumentController implements Initializable {
                     Logger.getLogger(FXMLDocumentController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             } else {
-                try {
-                    CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-                    HttpPost request = new HttpPost("https://stormy-bayou-55176.herokuapp.com/post/1234");
-                    System.out.println(this.json.toString());
-                    StringEntity params = new StringEntity(this.json.toString());
-                    request.addHeader("content-type", "application/json");
-                    request.setEntity(params);
+                try {                   
+                    CloseableHttpClient httpClient = HttpClientBuilder.create().build();                                        
+                    this.info = convert(this.info.toString());                                        
+                    URL url = new URL("https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/inserteventnight?"+this.info.toString());
+                    
+                    //System.out.println(url.toString());
+                    
+                    HttpPost request = new HttpPost(url.toString());
                     httpClient.execute(request);
                     httpClient.close();
+
                 } catch (Exception e) {
                     System.out.println(e.toString());
                 }

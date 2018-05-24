@@ -1,0 +1,23 @@
+these are the source code of the our api's. these python2.7 codes are located in AWS Lambda function
+Lambda function and API Gate Way tools we create APIs 
+
+>Here how they use;
+ 
+GetAll;
+https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/gelall
+
+giveLast10Day;
+https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/gellast10day
+
+giveDateInfo :  date= 2018-03-10
+https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/getdateinfo?date=2018-03-10
+
+UpdateComment; 
+https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/updatecomment?date=2018-03-10&comment=APIworks
+
+Insert : 
+
+https://i4pd9k2cy9.execute-api.us-east-2.amazonaws.com/prod/inserteventnight?artistName=azraVardar&artistPrice=10000&eventType=8binlik&eventDate=21-05-2019&eventComment=guzelgun&totalProfit=3021&totalEndersement=15000&tip=600&dontPay=230&totalCost=5032&nameOfSales=70cl | 35cl | Konfeti | Sigara | Bardak&sumOfProfit=20.04 | 32.04 | 54.65 | 12.65 | 123412.45&sumOfGiro=28.04 | 92.04 | 64.65 |42.65 | 1122.45&salesNumber=3 | 4 | 5 | 6 | 7&cl70Number=3&cl35Number=7&confetyNumber=22&bottleNumber=3&totalDiscount=320.23&alcoholIndex=0.323&generalIndex=0.234&grupEnterenceFree=3203
+
+
+						   U.F.V.   
